@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard Kits — 한 줄로 만드는 대시보드</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f3f5f5;--card:#fff;--border:#e8e8e8;--ink:#0a0a0a;--t2:#444;--t3:#888;--accent:#E8603C;--blue:#4A7AB5}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+.wrap{max-width:1080px;margin:0 auto;padding:56px 24px 80px}
+header{margin-bottom:40px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+h1{font-size:34px;font-weight:800;letter-spacing:-.02em}
+.lead{font-size:15px;color:var(--t2);margin-top:12px;max-width:680px}
+.cmd{display:inline-block;margin-top:18px;background:#000;color:#fff;font-family:ui-monospace,Menlo,monospace;font-size:13px;padding:8px 14px;border-radius:8px}
+.cmd b{color:#7ec8a9}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:36px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;display:flex;flex-direction:column;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.card .num{font-size:11px;font-weight:700;color:var(--t3);letter-spacing:.06em}
+.card h2{font-size:18px;font-weight:700;margin:6px 0 8px}
+.card p{font-size:13px;color:var(--t2);flex:1}
+.links{display:flex;gap:8px;margin-top:16px}
+.btn{font-size:12.5px;font-weight:600;text-decoration:none;padding:8px 13px;border-radius:8px;transition:.15s}
+.btn-primary{background:#000;color:#fff}
+.btn-primary:hover{background:var(--accent)}
+.btn-ghost{background:transparent;color:var(--t2);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+footer{margin-top:48px;font-size:12px;color:var(--t3);border-top:1px solid var(--border);padding-top:20px}
+@media(max-width:680px){.grid{grid-template-columns:1fr}h1{font-size:27px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Prompt to Dashboard</div>
+    <h1>한 줄로 만드는 대시보드</h1>
+    <p class="lead">CSV 하나만 있으면 명령어 한 줄로 강사와 동일한 퀄리티의 대시보드가 만들어집니다. 도메인별 CLAUDE.md + Skill + 기준 템플릿을 묶은 스타터킷입니다.</p>
+    <div class="cmd">cd 01-marketing &amp;&amp; claude → <b>/build-dashboard</b></div>
+  </header>
+
+  <div class="grid">
+    <div class="card">
+      <span class="num">01 · MARKETING</span>
+      <h2>캠페인 성과</h2>
+      <p>채널별 ROAS, 시계열 예측, K-means 클러스터, 예산 시뮬레이터까지. 어디에 예산을 더 넣을지 3초 안에 보이는 화면.</p>
+      <div class="links">
+        <a class="btn btn-primary" href="01-marketing/output/marketing_dashboard.html">대시보드 보기</a>
+        <a class="btn btn-ghost" href="01-marketing/">킷 열기</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="num">02 · A/B TEST</span>
+      <h2>실험 의사결정</h2>
+      <p>실험별 효과크기 forest plot, 세그먼트 분석, z-test 유의성, 배포/보류 의사결정표. 어느 변형을 내보낼지 판단.</p>
+      <div class="links">
+        <a class="btn btn-primary" href="02-abtest/output/abtest_dashboard.html">대시보드 보기</a>
+        <a class="btn btn-ghost" href="02-abtest/">킷 열기</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="num">03 · PRODUCT</span>
+      <h2>Metric Hierarchy</h2>
+      <p>North Star → Supporting 지표 위계, 원인 분석, RFM 세그먼트, Action 도출. 지표가 왜 움직였는지 추적.</p>
+      <div class="links">
+        <a class="btn btn-primary" href="03-pm/output/pm_dashboard.html">대시보드 보기</a>
+        <a class="btn btn-ghost" href="03-pm/">킷 열기</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="num">04 · RETENTION</span>
+      <h2>코호트 &amp; LTV</h2>
+      <p>가입월별 코호트 리텐션 매트릭스, MRR 구성, LTV 분포, Churn 조정 What-if 시뮬레이터.</p>
+      <div class="links">
+        <a class="btn btn-primary" href="04-retention/output/retention_dashboard.html">대시보드 보기</a>
+        <a class="btn btn-ghost" href="04-retention/">킷 열기</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="num">05 · HR</span>
+      <h2>채용 퍼널</h2>
+      <p>지원 → 입사 단계별 전환율, 부서별 time-to-hire, 오퍼 수락률, 이탈 리스크. 어느 단계가 병목인지.</p>
+      <div class="links">
+        <a class="btn btn-primary" href="05-hr/output/hr_dashboard.html">대시보드 보기</a>
+        <a class="btn btn-ghost" href="05-hr/">킷 열기</a>
+      </div>
+    </div>
+    <div class="card" style="justify-content:center;background:#000;color:#fff;border-color:#000">
+      <span class="num" style="color:#7ec8a9">HOW IT WORKS</span>
+      <h2 style="color:#fff">왜 매번 같은 퀄?</h2>
+      <p style="color:rgba(255,255,255,.7)">CLAUDE.md(규칙) + Skill(절차) + reference.html(기준) 세 개가 묶여 있어 데이터만 바뀌어도 퀄리티는 일정합니다. 복붙이 아니라 구조 재사용 + 실제 분석값 주입.</p>
+    </div>
+  </div>
+
+  <footer>패스트캠퍼스 「세계 3등에게 배우는 AI 데이터 시각화」 · 전서연 · github.com/seoyeon924/dashboard-kits</footer>
+</div>
+</body>
+</html>
