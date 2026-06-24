@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1300">
-<title>코호트 리텐션 & LTV | Retention OS</title>
+<title>세일즈 리텐션 & 매출 변동 | Sales OS</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
@@ -194,8 +194,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
     <div class="sb-ic">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
     </div>
-    <div class="brand">Retention OS</div>
-    <div class="sub">Cohort & LTV</div>
+    <div class="brand">Sales OS</div>
+    <div class="sub">Retention & Revenue</div>
   </div>
   <nav class="sb-nav">
     <div class="sb-grp">Overview</div>
@@ -257,44 +257,44 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
     <!-- ROW 1: KPI - 정의 포함 -->
     <div class="row1">
       <div class="kpi">
-        <div class="kpi-lbl">MRR <span style="font-size:7.5px;color:var(--t4);font-weight:400">· 최근 30일</span></div>
+        <div class="kpi-lbl">MRR <span style="font-size:7.5px;color:var(--t4);font-weight:400">· 2024.06</span></div>
         <div class="kpi-val">₩409M</div>
-        <div class="kpi-sub"><span class="badge bg">▲ +8.2% MoM</span></div>
+        <div class="kpi-sub"><span class="badge bg">▲ +7.7% MoM</span></div>
         <canvas class="kpi-spark" id="spark0"></canvas>
         <div class="kpi-def">월간 반복매출 · 계정 기준</div>
       </div>
       <div class="kpi">
-        <div class="kpi-lbl">M6 코호트 리텐션 <span style="font-size:7.5px;color:var(--t4);font-weight:400">· 2024.01</span></div>
+        <div class="kpi-lbl">M5 코호트 리텐션 <span style="font-size:7.5px;color:var(--t4);font-weight:400">· 2024.01</span></div>
         <div class="kpi-val">58%</div>
         <div class="kpi-sub"><span class="badge bn">코호트 기준</span></div>
         <canvas class="kpi-spark" id="spark1"></canvas>
-        <div class="kpi-def">6개월 후 잔존율 · 계정 기준</div>
+        <div class="kpi-def">가입 5개월차 잔존율 · 가입월 기준</div>
       </div>
       <div class="kpi">
-        <div class="kpi-lbl">평균 LTV <span style="font-size:7.5px;color:var(--t4);font-weight:400">· 이번 분기</span></div>
-        <div class="kpi-val">₩1.20M</div>
-        <div class="kpi-sub"><span class="badge bg">▲ +12.4% QoQ</span></div>
+        <div class="kpi-lbl">평균 LTV <span style="font-size:7.5px;color:var(--t4);font-weight:400">· 전체</span></div>
+        <div class="kpi-val">₩1.2M</div>
+        <div class="kpi-sub"><span class="badge bn">전체 평균 기준</span></div>
         <canvas class="kpi-spark" id="spark2"></canvas>
-        <div class="kpi-def">계약기간 × 월평균 매출 · 전체 평균</div>
+        <div class="kpi-def">유저 생애 매출 합 · 전체 평균</div>
       </div>
       <div class="kpi">
-        <div class="kpi-lbl">Revenue Churn <span style="font-size:7.5px;color:var(--t4);font-weight:400">· 최근 30일</span></div>
-        <div class="kpi-val">11.0%</div>
-        <div class="kpi-sub"><span class="badge bg">▼ -0.4%p MoM</span></div>
+        <div class="kpi-lbl">Revenue Churn <span style="font-size:7.5px;color:var(--t4);font-weight:400">· 2024.05</span></div>
+        <div class="kpi-val">12.3%</div>
+        <div class="kpi-sub"><span class="badge br">▲ +1.1%p MoM</span></div>
         <canvas class="kpi-spark" id="spark3"></canvas>
         <div class="kpi-def">이탈 MRR / 전월 MRR · 매출 기준</div>
       </div>
       <div class="kpi">
-        <div class="kpi-lbl">신규 MRR <span style="font-size:7.5px;color:var(--t4);font-weight:400">· 최근 30일</span></div>
+        <div class="kpi-lbl">신규 MRR <span style="font-size:7.5px;color:var(--t4);font-weight:400">· 2024.06</span></div>
         <div class="kpi-val">₩65M</div>
-        <div class="kpi-sub"><span class="badge bg">▲ +18.3% MoM</span></div>
+        <div class="kpi-sub"><span class="badge br">▼ -3.0% MoM</span></div>
         <canvas class="kpi-spark" id="spark4"></canvas>
-        <div class="kpi-def">신규 계약 월간 매출 · 업셀 별도</div>
+        <div class="kpi-def">신규 가입 월매출 · 업셀 별도</div>
       </div>
       <div class="kpi">
-        <div class="kpi-lbl">NRR <span style="font-size:7.5px;color:var(--t4);font-weight:400">· 이번 분기</span></div>
-        <div class="kpi-val">91%</div>
-        <div class="kpi-sub"><span class="badge bg">▲ +3%p QoQ</span></div>
+        <div class="kpi-lbl">NRR <span style="font-size:7.5px;color:var(--t4);font-weight:400">· 2024.05</span></div>
+        <div class="kpi-val">89%</div>
+        <div class="kpi-sub"><span class="badge br">▼ -1%p MoM</span></div>
         <canvas class="kpi-spark" id="spark5"></canvas>
         <div class="kpi-def">기존 고객 순매출 잔존율 · 신규 제외</div>
       </div>
@@ -314,7 +314,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
           <div id="mrrFilters" style="display:flex;gap:4px;flex-wrap:wrap"></div>
         </div>
         <div class="chart-summary">
-          <b>4월 이후 이탈 MRR 감소 전환</b> — 확장 MRR이 이탈을 초과하며 NRR 112% 달성. 단, 5·6월 신규 MRR 증가세는 둔화 중.
+          <b>총 MRR은 ₩409M까지 성장</b>했으나 <b>신규 MRR이 121→65M로 둔화</b>. 확장(+₩6M)이 이탈(−₩42M)을 못 메워 NRR 89% — 성장 동력이 신규에서 리텐션으로 이동해야 함.
         </div>
         <div class="chart-wrap"><canvas id="mrrChart"></canvas></div>
       </div>
@@ -331,39 +331,39 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
         <div class="sim-wrap" id="simWrap">
           <div class="sim-row">
             <div class="sim-lbl">Revenue Churn</div>
-            <input type="range" id="slChurn" min="0.5" max="8" step="0.1" value="3.2" class="sim-track" oninput="updateSim()">
-            <div class="sim-val" id="vChurn">3.2%</div>
+            <input type="range" id="slChurn" min="2" max="20" step="0.1" value="12.3" class="sim-track" oninput="updateSim()">
+            <div class="sim-val" id="vChurn">12.3%</div>
           </div>
           <div class="sim-row">
             <div class="sim-lbl">확장 MRR 비율</div>
-            <input type="range" id="slExp" min="2" max="15" step="0.5" value="6.7" class="sim-track" oninput="updateSim()">
-            <div class="sim-val" id="vExp">6.7%</div>
+            <input type="range" id="slExp" min="0" max="10" step="0.1" value="1.4" class="sim-track" oninput="updateSim()">
+            <div class="sim-val" id="vExp">1.4%</div>
           </div>
           <div class="sim-row">
             <div class="sim-lbl">신규 MRR</div>
-            <input type="range" id="slNew" min="20" max="80" step="1" value="42" class="sim-track" oninput="updateSim()">
-            <div class="sim-val" id="vNew">₩42M</div>
+            <input type="range" id="slNew" min="20" max="140" step="1" value="65" class="sim-track" oninput="updateSim()">
+            <div class="sim-val" id="vNew">₩65M</div>
           </div>
           <div class="sim-result">
             <div class="sim-res-item">
               <div class="sim-res-lbl">예측 MRR</div>
-              <div class="sim-res-val" id="resMRR">₩297M</div>
-              <div class="sim-res-delta" id="resMRRd" style="color:#10B981">▲ +₩13M</div>
+              <div class="sim-res-val" id="resMRR">₩429M</div>
+              <div class="sim-res-delta" id="resMRRd" style="color:#10B981">▲ +₩20M</div>
             </div>
             <div class="sim-res-item">
               <div class="sim-res-lbl">예측 NRR</div>
-              <div class="sim-res-val" id="resNRR">112%</div>
+              <div class="sim-res-val" id="resNRR">89%</div>
               <div class="sim-res-delta" id="resNRRd" style="color:#10B981">유지</div>
             </div>
             <div class="sim-res-item">
               <div class="sim-res-lbl">3개월 후 MRR</div>
-              <div class="sim-res-val" id="resFore">₩334M</div>
-              <div class="sim-res-delta" id="resForeDelta" style="color:#10B981">▲ +17.6%</div>
+              <div class="sim-res-val" id="resFore">₩495M</div>
+              <div class="sim-res-delta" id="resForeDelta" style="color:#10B981">▲ +21.0%</div>
             </div>
           </div>
           <div style="font-size:8.5px;color:var(--t3);line-height:1.6;padding:6px 2px;border-top:1px solid var(--border);flex-shrink:0">
             슬라이더를 조정하면 다항회귀 모델이 MRR 변화를 실시간 예측합니다.<br>
-            <b style="color:var(--t2)">Churn 1%p 감소</b> = 약 ₩9M 순매출 개선 효과
+            <b style="color:var(--t2)">Churn 1%p 감소</b> = 약 ₩4.1M 순매출 개선 효과
           </div>
         </div>
       </div>
@@ -390,8 +390,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
         <div class="card-hd">
           <div class="card-num">4</div>
           <div>
-            <div class="card-title">이탈 원인 파레토</div>
-            <div class="card-sub">누적 80% 집중 원칙 · 탭으로 건수/매출 영향 전환</div>
+            <div class="card-title">플랜별 이탈 분포 파레토</div>
+            <div class="card-sub">누적 80% 집중 원칙 · 탭으로 이탈 건수/매출 영향 전환</div>
           </div>
         </div>
         <div class="tab-row">
@@ -411,7 +411,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
           </div>
         </div>
         <div class="chart-wrap"><canvas id="ltvChart"></canvas></div>
-        <div class="ltv-caption">고객의 <b>56%</b>가 중가치 구간(₩500K–₩2M) 집중. <b>2·3구간 → 상위 전환 프로그램</b>이 효율 최고: CAC 대비 LTV 배수 3.8×. 유지 캠페인 우선 타겟.</div>
+        <div class="ltv-caption">고객의 <b>61%</b>가 중가치 구간(₩500K–₩2M)에 집중. 단 <b>19%는 ₩200K 미만 저잔존 구간</b> — 온보딩 단계 조기 이탈 추정. <b>2·3구간 상위 전환 프로그램</b>이 LTV 효율 최고 타겟.</div>
       </div>
     </div>
 
@@ -441,7 +441,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
         </div>
         <div class="anomaly-banner" id="anomalyBanner">
           <div class="anomaly-banner-dot"></div>
-          <div class="anomaly-banner-txt">자동 감지: <b>스타터 플랜 Churn 5.2%</b>가 전체 평균(3.2%) 대비 <b>+1.6 표준편차</b> 초과 — 즉시 확인 필요</div>
+          <div class="anomaly-banner-txt">자동 감지: <b>비즈니스 플랜 Revenue Churn 14.5%</b>가 전체 평균(12.3%) 대비 최고 — 고ARPU 이탈, 즉시 확인 필요</div>
           <span class="anomaly-banner-badge">이상치 감지</span>
         </div>
         <div style="overflow:auto;flex:1">
@@ -523,12 +523,12 @@ function drawSparkline(canvasId, data, color, isDown){
 
 // 스파크라인 데이터 (최근 8개월 트렌드)
 const sparkData=[
-  {id:"spark0",data:[0,30,121,212,296,340,380,409],color:c1},     // MRR 상승
-  {id:"spark1",data:[154,127,100,73,65,62,61,58],color:c1},             // 리텐션 상승
-  {id:"spark2",data:[1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2],color:c1},// LTV 상승
-  {id:"spark3",data:[0,0,11.0,23.9,17.9,19.1,9.7,11.0],color:"#10B981"},// Churn 하락(긍정)
-  {id:"spark4",data:[127,124,121,118,120,96,67,65],color:c1},             // 신규 MRR 상승
-  {id:"spark5",data:[146,123,100,77,83,82,92,91],color:c1},     // NRR 상승
+  {id:"spark0",data:[121,212,296,340,380,409],color:c1},   // MRR 월별 총합(₩M) 상승
+  {id:"spark1",data:[73,82,81,89,88],color:c1},            // 월별 로고 리텐션(%)
+  {id:"spark2",data:[0.38,0.54,0.71,0.88,1.04,1.2],color:c1},// 누적 평균 LTV(₩M)
+  {id:"spark3",data:[31.3,26.7,11.2,12.3],color:c1},       // Revenue Churn(%) — 하락 후 반등
+  {id:"spark4",data:[121,118,120,96,67,65],color:c1},      // 신규 MRR(₩M) 둔화
+  {id:"spark5",data:[70,75,90,89],color:c1},               // NRR(%) — 100 미달
 ];
 // DOM 렌더 후 실행
 window.addEventListener("load",()=>{
@@ -543,11 +543,11 @@ function fmt(n){
 }
 
 // ── MRR 스택 + 성장률 라인 ──
-const months=["01월","02월","03월","04월","05월","06월","7월(예)","8월(예)","9월(예)"];
+const months=["1월","2월","3월","4월","5월","6월","7월(예)","8월(예)","9월(예)"];
 const newMRR=[121,118,120,96,67,65,null,null,null];
 const expMRR=[0,2,3,4,5,6,null,null,null];
-const churnMRR=[0,-29,-38,-57,-33,-42,null,null,null];
-const growthRate=[0.0,74.5,39.9,14.8,11.6,7.7,null,null,null];
+const churnMRR=[-29,-38,-57,-33,-42,null,null,null,null];
+const growthRate=[null,74.5,39.9,14.8,11.6,7.7,null,null,null];
 
 const mrrCtx=document.getElementById("mrrChart").getContext("2d");
 const mrrChart=new Chart(mrrCtx,{
@@ -559,7 +559,7 @@ const mrrChart=new Chart(mrrCtx,{
     {type:"line",label:"MoM 성장률 (%)",data:growthRate,borderColor:c1,backgroundColor:"transparent",
      borderWidth:2,pointRadius:3,pointBackgroundColor:c1,tension:.3,yAxisID:"y2"},
     // 예측 데이터 (다항회귀 기반 7~9월)
-    {type:"line",label:"MRR 예측 (₩M)",data:[null,null,null,null,null,284,297,311,326],
+    {type:"line",label:"MRR 예측 (₩M)",data:[null,null,null,null,null,409,441,475,512],
      borderColor:"#2E3B55",backgroundColor:"transparent",borderWidth:1.5,borderDash:[5,4],
      pointRadius:[0,0,0,0,0,4,4,4,4],pointBackgroundColor:"#2E3B55",tension:.3,yAxisID:"y3"},
   ]},
@@ -583,7 +583,7 @@ const mrrChart=new Chart(mrrCtx,{
          title:{display:true,text:"변동 MRR (₩M) — 빨간 막대=이탈 차감",font:{size:8.5},color:"#94A3B8"},stacked:true},
       y2:{grid:{display:false},ticks:{font:{size:9},callback:v=>v+"%"},
           title:{display:true,text:"MoM 성장률 (%)",font:{size:8.5},color:"#94A3B8"},position:"right"},
-      y3:{display:false,min:200,max:380}
+      y3:{display:false,min:380,max:540}
     }
   }
 });
@@ -603,7 +603,7 @@ const mrrFilters=document.getElementById("mrrFilters");
 
 // ── What-if 시뮬레이터 ──
 const BASE_MRR=409;
-const BASE_NRR=91;
+const BASE_NRR=89;
 
 function updateSim(){
   const churn=parseFloat(document.getElementById("slChurn").value);
@@ -687,12 +687,12 @@ cohortData.forEach((row,i)=>{
 
 // ── 파레토 차트 ──
 const paretoCount={
-  labels:["가격 불만","기능 부족","경쟁사 이탈","사용 불편","예산 삭감","기타"],
-  data:[32,24,18,12,8,6],
+  labels:["스타터","프로","비즈니스","엔터프라이즈"],
+  data:[51,29,16,4],
 };
 const paretoRevenue={
-  labels:["경쟁사 이탈","예산 삭감","가격 불만","기능 부족","사용 불편","기타"],
-  data:[38,26,18,10,5,3],
+  labels:["비즈니스","프로","엔터프라이즈","스타터"],
+  data:[36,30,21,13],
 };
 let cumCount=0,cumRevenue=0;
 const cumDataCount=paretoCount.data.map(v=>{cumCount+=v;return cumCount;});
@@ -735,7 +735,7 @@ const paretoChart=new Chart(paretoCtx,{
     plugins:{legend:{display:false},tooltip:{backgroundColor:"#0F172A",callbacks:{label:c=>c.datasetIndex===0?`비중: ${c.raw}%`:`누적: ${c.raw}%`}}},
     scales:{
       x:{grid:{display:false},ticks:{font:{size:9}}},
-      y:{grid:{color:"#F1F5F9"},ticks:{font:{size:9},callback:v=>v+"%"},max:45},
+      y:{grid:{color:"#F1F5F9"},ticks:{font:{size:9},callback:v=>v+"%"},max:55},
       y2:{grid:{display:false},ticks:{font:{size:9},callback:v=>v+"%"},position:"right",max:110}
     }
   }
@@ -755,7 +755,7 @@ window.switchPareto=function(type,btn){
 
 // ── LTV 분포 ──
 const ltvLabels=["~₩200K","~₩500K","~₩1M","~₩2M","~₩5M","₩5M+"];
-const ltvData=[28,27,16,11,14,4];
+const ltvData=[19,29,22,10,16,4];
 const ltvBarPlugin={id:"ltvL",afterDatasetsDraw(chart){
   const{ctx,data,scales:{y}}=chart;
   chart.getDatasetMeta(0).data.forEach((bar,i)=>{
@@ -801,34 +801,34 @@ new Chart(document.getElementById("ltvChart").getContext("2d"),{
 // ── AI 인사이트 (영향도+우선순위+액션) ──
 const aiItems=[
   {
-    idx:"01",title:"이탈 위험 고객 12명 감지",pri:"높음",priBg:"#FEF2F2",priTxt:"#EF4444",
+    idx:"01",title:"2024.03 코호트 M3 리텐션 48% — 전 코호트 최저",pri:"높음",priBg:"#FEF2F2",priTxt:"#EF4444",
     cells:[
-      {lbl:"영향 매출",val:"₩28.4M (MRR 10%)"},
-      {lbl:"감지 기준",val:"3개월 로그인 감소"},
-      {lbl:"이탈 확률",val:"AI 예측 82%"},
-      {lbl:"기한",val:"이번 주 내 조치"},
+      {lbl:"현재 리텐션",val:"48% (M3, 최저)"},
+      {lbl:"비교 코호트",val:"2024.04 = 72%"},
+      {lbl:"코호트 규모",val:"n=270명"},
+      {lbl:"이탈 집중",val:"M1→M2 구간(-10%p)"},
     ],
-    action:"<b>권장:</b> 스타터 플랜 이탈 위험군 CSM 아웃리치 즉시 시작. 업셀 제안보다 온보딩 점검 우선."
+    action:"<b>권장:</b> 2024.03 가입군 온보딩 로그 점검. M1~M2 이탈 집중 → 가입 30·60일 인앱 가이드 + CSM 체크인 자동화."
   },
   {
-    idx:"02",title:"2024.01 코호트 M6 리텐션 하락",pri:"중간",priBg:"#EEF2F8",priTxt:"#2E3B55",
+    idx:"02",title:"NRR 89% — 확장이 이탈을 메우지 못함",pri:"높음",priBg:"#FEF2F2",priTxt:"#EF4444",
     cells:[
-      {lbl:"현재 리텐션",val:"56% (전코호트 최저)"},
-      {lbl:"원인 추정",val:"온보딩 미완료 42%"},
-      {lbl:"Revenue 영향",val:"-₩8.2M 손실"},
-      {lbl:"비교",val:"2024.04 코호트 75%"},
+      {lbl:"현재 NRR",val:"89% (5월·100% 미달)"},
+      {lbl:"월 확장 MRR",val:"+₩6M"},
+      {lbl:"월 이탈 MRR",val:"−₩42M"},
+      {lbl:"순효과",val:"확장 < 이탈"},
     ],
-    action:"<b>권장:</b> 온보딩 완료율 기준 세그먼트 분리. 미완료 그룹 인앱 가이드 + 1:1 세션 자동화."
+    action:"<b>권장:</b> 신규 업셀보다 이탈 방어 우선. Churn 1%p↓ ≈ ₩4.1M 순매출 개선 — What-if 시뮬레이터로 목표 설정."
   },
   {
-    idx:"03",title:"경쟁사 이탈이 매출 영향 1위",pri:"높음",priBg:"#FEF2F2",priTxt:"#EF4444",
+    idx:"03",title:"이탈 매출 영향 1위 = 비즈니스 플랜",pri:"중간",priBg:"#EEF2F8",priTxt:"#2E3B55",
     cells:[
-      {lbl:"건수 순위",val:"3위 (18%)"},
-      {lbl:"매출 영향",val:"1위 (38%)"},
-      {lbl:"타겟 플랜",val:"비즈니스 이상"},
-      {lbl:"경쟁사",val:"A사 마이그레이션"},
+      {lbl:"이탈 건수",val:"3위 (16%)"},
+      {lbl:"매출 영향",val:"1위 (36%)"},
+      {lbl:"5월 Churn",val:"14.5% (최고)"},
+      {lbl:"타겟 플랜",val:"비즈니스·엔터프라이즈"},
     ],
-    action:"<b>권장:</b> 비즈니스·엔터프라이즈 플랜 계약 만료 90일 전 Win-back 캠페인 설계. 가격보다 기능 차별화 집중."
+    action:"<b>권장:</b> 고ARPU 비즈니스 플랜 이탈이 매출 손실 1위. 계약 만료 전 Win-back + 전담 성공 관리로 집중 방어."
   },
 ];
 const aiList=document.getElementById("aiList");
@@ -847,14 +847,14 @@ aiItems.forEach(item=>{
 
 // ── 세그먼트 테이블 ──
 const segments=[
-  {plan:"엔터프라이즈",customers:49,mrr:"₩103.1M",churnVal:6.8,nrrVal:90,ltv:"₩6.21M",mom:"-0.3%p",action:"CSM 배정",actionBg:"#FEF2F2",actionTxt:"#EF4444"},
-  {plan:"비즈니스",customers:146,mrr:"₩138.5M",churnVal:13.4,nrrVal:90,ltv:"₩2.73M",mom:"-0.3%p",action:"CSM 배정",actionBg:"#FEF2F2",actionTxt:"#EF4444"},
-  {plan:"프로",customers:285,mrr:"₩119.8M",churnVal:11.7,nrrVal:90,ltv:"₩1.17M",mom:"-0.3%p",action:"CSM 배정",actionBg:"#FEF2F2",actionTxt:"#EF4444"},
-  {plan:"스타터",customers:479,mrr:"₩47.9M",churnVal:11.9,nrrVal:90,ltv:"₩283K",mom:"-0.3%p",action:"CSM 배정",actionBg:"#FEF2F2",actionTxt:"#EF4444"},
-  {plan:"전체 합계",customers:959,mrr:"₩409.2M",churnVal:11.8,nrrVal:91,ltv:"₩1.20M",mom:"+0.1%p",action:null},
+  {plan:"스타터",customers:479,mrr:"₩47.9M",churnVal:13.9,nrrVal:100,ltv:"₩283K",mom:"+7.6%",action:"이탈 방어",actionBg:"#FEF2F2",actionTxt:"#EF4444"},
+  {plan:"프로",customers:285,mrr:"₩119.8M",churnVal:12.9,nrrVal:102,ltv:"₩1.17M",mom:"+8.3%",action:"유지+업셀",actionBg:"#EEF2F8",actionTxt:"#2E3B55"},
+  {plan:"비즈니스",customers:146,mrr:"₩138.5M",churnVal:14.5,nrrVal:102,ltv:"₩2.73M",mom:"+4.0%",action:"Win-back 설계",actionBg:"#FEF2F2",actionTxt:"#EF4444"},
+  {plan:"엔터프라이즈",customers:49,mrr:"₩103.1M",churnVal:7.4,nrrVal:102,ltv:"₩6.21M",mom:"+12.6%",action:"고객 성공팀",actionBg:"#ECFDF5",actionTxt:"#10B981"},
+  {plan:"전체 합계",customers:959,mrr:"₩409.2M",churnVal:12.3,nrrVal:89,ltv:"₩1.2M",mom:"+7.7%",action:null},
 ];
 const t=document.getElementById("segTable");
-const maxMRR=284;
+const maxMRR=409;
 t.innerHTML="<thead><tr>"+
   "<th style='text-align:left'>플랜</th>"+
   "<th>고객 수</th>"+
@@ -872,8 +872,8 @@ t.innerHTML="<thead><tr>"+
     const churnColor=isDanger?"#EF4444":isWarn?"#2E3B55":"#10B981";
     const nrrColor=s.nrrVal>=110?"#10B981":"#334155";
     const momColor=s.mom.startsWith("+")?"#10B981":"#EF4444";
-    const barW=Math.round((s.customers/520)*52);
-    const churnBarW=Math.round((s.churnVal/6)*48);
+    const barW=Math.round((s.customers/959)*52);
+    const churnBarW=Math.round((s.churnVal/16)*48);
     const mrrNum=parseFloat(s.mrr.replace("₩","").replace("M",""));
     const mrrBarW=Math.round((mrrNum/maxMRR)*52);
     const rowClass=isLast?"total-row":isDanger?"row-danger":isWarn?"row-warn":"";
