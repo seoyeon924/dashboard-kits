@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1300">
-<title>Data PM OS | Metric Intelligence — product_metrics.csv</title>
+<title>Data PM OS | Metric Intelligence</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
@@ -217,7 +217,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
   <div class="topbar">
     <div class="tb-left">
       <h1>Data PM · Metric Intelligence</h1>
-      <span class="tb-badge">구독 리텐션 중심 · Input Metric 관제</span>
+      <span class="tb-badge">가입 6주 코호트 · 120명 · Input Metric 관제</span>
     </div>
     <div class="date-filter-wrap">
       <span class="date-lbl">기준</span>
@@ -227,7 +227,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
         <button class="date-chip" onclick="setDate('q',this)">분기</button>
         <button class="date-chip" onclick="setDate('6m',this)">6개월</button>
       </div>
-      <span class="date-range" id="dateRange">2024.05.05 – 2024.06.16</span>
+      <span class="date-range" id="dateRange">2024.05.06 – 06.17</span>
     </div>
     <div style="display:flex;gap:6px">
       <button class="btn-sm">리포트 내보내기</button>
@@ -241,46 +241,46 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
     <!-- ROW 1: KPI (Input Metric 건강도) -->
     <div class="row1">
       <div class="kpi">
-        <div class="kpi-lbl">구독자 증감 비율 <span class="kpi-lbl-base">· 주간</span></div>
-        <div class="kpi-val" style="color:#ef7d86">0.82</div>
-        <div class="kpi-sub"><span class="badge br">이탈 > 유입</span></div>
+        <div class="kpi-lbl">구독자 증감 비율 <span class="kpi-lbl-base">· 6주 누적</span></div>
+        <div class="kpi-val">2.91</div>
+        <div class="kpi-sub"><span class="badge bg">유입 > 이탈</span></div>
         <canvas class="kpi-spark" id="spark0"></canvas>
-        <div class="kpi-def">(신규+복귀) / 이탈 · < 1 위험</div>
+        <div class="kpi-def">(신규+복귀) / 이탈 · > 1 건강</div>
       </div>
       <div class="kpi">
-        <div class="kpi-lbl">재결제율 <span class="kpi-lbl-base">· 월간</span></div>
-        <div class="kpi-val">71.4%</div>
-        <div class="kpi-sub"><span class="badge br">▼ -3.2%p</span></div>
+        <div class="kpi-lbl">재결제율 <span class="kpi-lbl-base">· 6주</span></div>
+        <div class="kpi-val">62.5%</div>
+        <div class="kpi-sub"><span class="badge br">해지율 37.5%</span></div>
         <canvas class="kpi-spark" id="spark1"></canvas>
         <div class="kpi-def">1 - 구독 해지율 · 최우선 개선</div>
       </div>
       <div class="kpi">
-        <div class="kpi-lbl">체험 전환율 <span class="kpi-lbl-base">· 최근 30일</span></div>
-        <div class="kpi-val">38.2%</div>
-        <div class="kpi-sub"><span class="badge bg">▲ +1.4%p</span></div>
+        <div class="kpi-lbl">체험 전환율 <span class="kpi-lbl-base">· 가입 코호트</span></div>
+        <div class="kpi-val">30.0%</div>
+        <div class="kpi-sub"><span class="badge br">70% 미활성</span></div>
         <canvas class="kpi-spark" id="spark2"></canvas>
-        <div class="kpi-def">무료체험 전환 / 핵심기능 미리보기</div>
+        <div class="kpi-def">체험 시작 / 가입자</div>
       </div>
       <div class="kpi">
-        <div class="kpi-lbl">구독 전환율 <span class="kpi-lbl-base">· 최근 30일</span></div>
-        <div class="kpi-val">24.6%</div>
-        <div class="kpi-sub"><span class="badge br">▼ -0.8%p</span></div>
+        <div class="kpi-lbl">구독 전환율 <span class="kpi-lbl-base">· 가입 코호트</span></div>
+        <div class="kpi-val">77.8%</div>
+        <div class="kpi-sub"><span class="badge br">▼ 후기 -28.8%p</span></div>
         <canvas class="kpi-spark" id="spark3"></canvas>
         <div class="kpi-def">결제 전환 / 무료체험 완료자</div>
       </div>
       <div class="kpi">
         <div class="kpi-lbl">좌절 경험률 <span class="kpi-lbl-base">· 주간</span></div>
-        <div class="kpi-val">41.3%</div>
-        <div class="kpi-sub"><span class="badge br">▲ +4.1%p 악화</span></div>
+        <div class="kpi-val">27.2%</div>
+        <div class="kpi-sub"><span class="badge bg">▼ -13.6%p 개선</span></div>
         <canvas class="kpi-spark" id="spark4"></canvas>
-        <div class="kpi-def">핵심기능 없는 문제 / 전체 검색</div>
+        <div class="kpi-def">검색 실패 / 전체 검색</div>
       </div>
       <div class="kpi">
-        <div class="kpi-lbl">액티브 리텐션 <span class="kpi-lbl-base">· 주간</span></div>
-        <div class="kpi-val">58.9%</div>
-        <div class="kpi-sub"><span class="badge br">▼ -2.3%p</span></div>
+        <div class="kpi-lbl">액티브 리텐션 <span class="kpi-lbl-base">· 가입 코호트</span></div>
+        <div class="kpi-val">60.0%</div>
+        <div class="kpi-sub"><span class="badge br">▼ 2~3주차 이탈</span></div>
         <canvas class="kpi-spark" id="spark5"></canvas>
-        <div class="kpi-def">핵심기능 사용 / W-1 구독자</div>
+        <div class="kpi-def">로그인 경험 / 가입자</div>
       </div>
     </div>
 
@@ -305,42 +305,42 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
         <div class="card-hd">
           <div class="card-num">2</div>
           <div>
-            <div class="card-title">유입 대비 이탈 비율은 균형을 유지하는가?</div>
-            <div class="card-sub">구독자 증감 비율 0.82 — 이탈(487명)이 유입(399명)을 초과 · 매주 88명 순감 중 · 1.0 이상 회복 필요</div>
+            <div class="card-title">유입이 이탈을 앞서는가?</div>
+            <div class="card-sub">구독자 증감 비율 2.91 — 유입(131명)이 이탈(45명)을 초과 · 6주간 순증 +86명 · 단, 재결제율 62.5%가 약점</div>
           </div>
         </div>
         <div class="pulse-wrap">
-          <div class="pulse-main" style="text-align:left;padding:12px;background:rgba(228,107,115,0.05);border-radius:10px;border:1px solid rgba(228,107,115,0.15)">
-            <div style="font-size:10px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">이번 주 구독자 증감 비율</div>
+          <div class="pulse-main" style="text-align:left;padding:12px;background:rgba(69,179,125,0.05);border-radius:10px;border:1px solid rgba(69,179,125,0.18)">
+            <div style="font-size:10px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">6주 누적 구독자 증감 비율</div>
             <div style="display:flex;align-items:baseline;gap:8px">
-              <div class="pulse-num" style="color:#ef7d86">0.82</div>
+              <div class="pulse-num" style="color:var(--green)">2.91</div>
               <div style="font-size:11px;color:var(--t3)">/ 목표 <b style="color:var(--t1)">1.0+</b></div>
             </div>
-            <div class="pulse-lbl" style="margin-top:4px">유입(399명) < 이탈(487명) · 매주 88명 순감</div>
+            <div class="pulse-lbl" style="margin-top:4px">유입(131명) > 이탈(45명) · 6주간 순증 +86명</div>
           </div>
           <div class="pulse-breakdown">
             <div class="pb-row">
               <div class="pb-lbl">신규 구독자</div>
-              <div class="pb-track"><div class="pb-fill" style="width:62%;background:var(--c1)"></div></div>
-              <div class="pb-val" style="color:var(--c1)">+310명</div>
+              <div class="pb-track"><div class="pb-fill" style="width:92%;background:var(--c1)"></div></div>
+              <div class="pb-val" style="color:var(--c1)">+120명</div>
             </div>
             <div class="pb-row">
               <div class="pb-lbl">복귀 구독자</div>
-              <div class="pb-track"><div class="pb-fill" style="width:18%;background:var(--c4)"></div></div>
-              <div class="pb-val" style="color:var(--c3)">+89명</div>
+              <div class="pb-track"><div class="pb-fill" style="width:8%;background:var(--c4)"></div></div>
+              <div class="pb-val" style="color:var(--c3)">+11명</div>
             </div>
             <div class="pb-row">
               <div class="pb-lbl" style="color:#ef7d86">이탈 구독자</div>
-              <div class="pb-track"><div class="pb-fill" style="width:80%;background:#ef7d86"></div></div>
-              <div class="pb-val" style="color:#ef7d86">-487명</div>
+              <div class="pb-track"><div class="pb-fill" style="width:34%;background:#ef7d86"></div></div>
+              <div class="pb-val" style="color:#ef7d86">-45명</div>
             </div>
           </div>
           <div class="pulse-formula">
-            (신규 310 + 복귀 89) ÷ 이탈 487 = <b style="color:#ef7d86">0.82</b><br>
-            이탈이 유입보다 <b>88명</b> 많음 · 즉각 재결제율 개선 필요
+            (신규 120 + 복귀 11) ÷ 이탈 45 = <b style="color:var(--green)">2.91</b><br>
+            유입이 이탈보다 <b>86명</b> 많음 · 성장 중이나 재결제율 개선 필요
           </div>
           <div style="font-size:8.5px;color:var(--t3);background:rgba(228,107,115,0.1);border-radius:6px;padding:6px 8px;border:1px solid rgba(228,107,115,0.2)">
-            복귀 구독자 89명은 신규와 <b style="color:var(--t2)">반드시 분리</b> 관리 — 무료체험 제공 불가, 이탈 경험 있어 다른 UX 필요
+            이탈 45명의 <b style="color:var(--t2)">100%가 가입 2~3주차</b>에 발생 — 신규 유입보다 초기 온보딩 활성화가 우선
           </div>
         </div>
       </div>
@@ -350,15 +350,15 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
         <div class="card-hd">
           <div class="card-num">3</div>
           <div>
-            <div class="card-title">코호트별 리텐션 곡선이 수렴하는가?</div>
-            <div class="card-sub">베이스라인 미수렴 — 장기 유지율 불안정 · 유입 확대 전 리텐션 안정화가 선행 조건</div>
+            <div class="card-title">코호트별 구독 생존율이 어디서 꺾이는가?</div>
+            <div class="card-sub">가입 2~3주차에 생존율 급락(100→56%) · 3주 이후 이탈 0% · 초기 온보딩이 유일한 고비</div>
           </div>
         </div>
         <div class="chart-wrap"><canvas id="retentionChart"></canvas></div>
         <div class="retention-legend">
-          <div class="ret-leg"><div class="ret-dot" style="background:var(--c2)"></div>2024.01 코호트</div>
-          <div class="ret-leg"><div class="ret-dot" style="background:var(--c3)"></div>2024.03 코호트</div>
-          <div class="ret-leg"><div class="ret-dot" style="background:var(--c5);border:1px solid var(--c3)"></div>이상적 곡선</div>
+          <div class="ret-leg"><div class="ret-dot" style="background:var(--c2)"></div>5월 1주 코호트</div>
+          <div class="ret-leg"><div class="ret-dot" style="background:var(--c3)"></div>5월 3주 코호트</div>
+          <div class="ret-leg"><div class="ret-dot" style="background:var(--c5);border:1px solid var(--c3)"></div>목표 곡선</div>
         </div>
       </div>
     </div>
@@ -373,7 +373,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
           <div class="card-num">4</div>
           <div>
             <div class="card-title">세그먼트별 이탈 위험도 현황</div>
-            <div class="card-sub">이탈 위험(28%) > 충성 고객(14%) 2배 · 가입기간·결제횟수·마지막 로그인 기준 분류</div>
+            <div class="card-sub">이탈 위험(33%)이 충성 고객(2%)의 16배 · 체험 미시작·저빈도 이용이 특징</div>
           </div>
         </div>
         <div style="flex:1;min-height:0;position:relative;">
@@ -382,11 +382,11 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px;flex-shrink:0;height:72px">
           <div style="background:rgba(228,107,115,0.08);border-radius:8px;padding:8px 10px;overflow:hidden">
             <div style="font-size:9px;color:#ef7d86;font-weight:700;margin-bottom:2px">이탈 위험 특징</div>
-            <div style="font-size:10px;color:var(--t2);line-height:1.5">로그인 14일↑ · 결제 1회<br>평균 가입 3주차</div>
+            <div style="font-size:10px;color:var(--t2);line-height:1.5">체험 미시작 73% · 로그인 1회↓<br>가입 2~3주차 이탈</div>
           </div>
           <div style="background:rgba(87,180,151,0.08);border-radius:8px;padding:8px 10px;overflow:hidden">
             <div style="font-size:9px;color:var(--c1);font-weight:700;margin-bottom:2px">충성 고객 특징</div>
-            <div style="font-size:10px;color:var(--t2);line-height:1.5">주 3회↑ 로그인 · 결제 4회↑<br>평균 가입 6개월↑</div>
+            <div style="font-size:10px;color:var(--t2);line-height:1.5">결제 완료 · 주 2회↑ 로그인<br>전체의 2% (2명)뿐</div>
           </div>
         </div>
       </div>
@@ -397,7 +397,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
           <div class="card-num">5</div>
           <div>
             <div class="card-title">이탈 트렌드 & 이탈자 특성 분포</div>
-            <div class="card-sub">주차별 이탈자 추이 · 가입 후 몇 주차에 이탈? · 어떤 플랜에서 이탈?</div>
+            <div class="card-sub">이탈 100%가 가입 2~3주차 집중 · 이후 0% · 베이직 플랜에서 최다(44%)</div>
           </div>
         </div>
         <!-- 주차별 이탈 트렌드 -->
@@ -422,14 +422,14 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
         <div class="card-hd">
           <div class="card-num">6</div>
           <div>
-            <div class="card-title">이탈 사유 TOP 5 — 무엇이 결정적인가?</div>
-            <div class="card-sub">핵심기능 부족 1위(42%) · 행동 데이터로 교차 검증 · 가격 불만은 행동 데이터와 괴리</div>
+            <div class="card-title">이탈자 행동 신호 TOP 5 — 무엇이 공통인가?</div>
+            <div class="card-sub">이탈자 73%가 체험조차 미시작·저빈도 이용 → 활성화 실패가 핵심 · 동기(왜)는 설문 필요</div>
           </div>
         </div>
         <div class="cause-list" id="causeList"></div>
         <div style="margin-top:8px;padding:8px 10px;background:rgba(228,107,115,0.06);border-radius:8px;border:1px solid rgba(228,107,115,0.15);flex-shrink:0;height:72px;overflow:hidden">
           <div style="font-size:9px;color:#ef7d86;font-weight:700;margin-bottom:3px">핵심 인사이트</div>
-          <div style="font-size:10px;color:var(--t2);line-height:1.5">핵심기능 부족은 설문+행동 데이터 일치 → 신뢰도 높음.<br>가격 불만은 행동 데이터 미반영 → 교란 변수 가능성.</div>
+          <div style="font-size:10px;color:var(--t2);line-height:1.5">활성화 실패(체험 미시작·저빈도)가 이탈의 공통분모 → 행동 로그로 검증됨.<br>'왜 안 썼나'(동기)는 로그로 알 수 없음 → 이탈 설문 교차검증 필요.</div>
         </div>
       </div>
     </div>
@@ -473,7 +473,7 @@ Chart.defaults.font.family="'Inter',-apple-system,sans-serif";
 const c1="#57b497",c2="#2a2a2a",c3="#57b497",c4="#7ca899",c5="rgba(87,180,151,0.16)";
 
 // 날짜 필터
-const dateRanges={"7d":"2024.06.24 – 06.30","30d":"2024.06.01 – 06.30","q":"2024.04.01 – 06.30","6m":"2024.01.01 – 06.30"};
+const dateRanges={"7d":"2024.06.10 – 06.17","30d":"2024.05.20 – 06.17","q":"2024.05.06 – 06.17","6m":"2024.05.06 – 06.17"};
 window.setDate=function(k,btn){
   document.querySelectorAll(".date-chip").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");
@@ -501,23 +501,23 @@ function drawSparkline(id,data,color){
   ctx.beginPath();ctx.arc(last.x,last.y,2.5,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();
 }
 window.addEventListener("load",()=>{
-  drawSparkline("spark0",[1.1,1.0,0.95,0.9,0.88,0.85,0.82],"#ef7d86");
-  drawSparkline("spark1",[76,75,74,73,73,72,71.4],"#ef7d86");
-  drawSparkline("spark2",[35,35.8,36.2,36.9,37.4,37.8,38.2],c1);
-  drawSparkline("spark3",[26,25.8,25.4,25.2,25.0,24.8,24.6],"#ef7d86");
-  drawSparkline("spark4",[33,35,36.8,38.1,39.4,40.2,41.3],"#ef7d86");
-  drawSparkline("spark5",[63,62.4,61.8,61.2,60.4,59.6,58.9],"#ef7d86");
+  drawSparkline("spark0",[20,40,60,68,71,80],c1);
+  drawSparkline("spark1",[100,100,100,80,75,84.5],"#ef7d86");
+  drawSparkline("spark2",[8,2,6,6,6,8],c1);
+  drawSparkline("spark3",[0,1,9,3,10,6],"#ef7d86");
+  drawSparkline("spark4",[37.5,35.7,33.3,22.7,33.3,11.8],c1);
+  drawSparkline("spark5",[0,10,18,17,24,30],c1);
 });
 
 // Metric Hierarchy Tree
 const treeData=[
-  {level:0,name:"구독 매출 (North Star)",val:"₩284M",delta:"+8.2%",deltaPos:true,tag:"NS",tagBg:c2,tagTxt:"#fff",cls:"north-star"},
-  {level:1,name:"구독자 수",val:"3,284명",delta:"-88명/주",deltaPos:false,tag:"Primary",tagBg:"rgba(87,180,151,0.08)",tagTxt:c2,cls:"primary"},
-  {level:2,name:"재결제율",val:"71.4%",delta:"-0.7%p",deltaPos:false,tag:"Input",tagBg:c5,tagTxt:c2,cls:"input"},
-  {level:2,name:"구독 전환율",val:"24.6%",delta:"-0.2%p",deltaPos:false,tag:"Input",tagBg:c5,tagTxt:c2,cls:"input"},
-  {level:2,name:"체험 전환율",val:"38.2%",delta:"+0.2%p",deltaPos:true,tag:"Input",tagBg:c5,tagTxt:c2,cls:"input"},
-  {level:2,name:"좌절 경험률",val:"41.3%",delta:"+1.9%p",deltaPos:false,tag:"Guardrail",tagBg:"rgba(228,107,115,0.1)",tagTxt:"#ef7d86",cls:"guardrail"},
-  {level:2,name:"액티브 리텐션",val:"58.9%",delta:"+0.0%p",deltaPos:true,tag:"Guardrail",tagBg:"rgba(228,107,115,0.1)",tagTxt:"#ef7d86",cls:"guardrail"},
+  {level:0,name:"구독 매출 (추정)",val:"~₩149K",delta:"유입>이탈",deltaPos:true,tag:"NS",tagBg:c2,tagTxt:"#fff",cls:"north-star"},
+  {level:1,name:"구독자 수",val:"86명",delta:"+86명/6주",deltaPos:true,tag:"Primary",tagBg:"rgba(87,180,151,0.08)",tagTxt:c2,cls:"primary"},
+  {level:2,name:"재결제율",val:"62.5%",delta:"해지 37.5%",deltaPos:false,tag:"Input",tagBg:c5,tagTxt:c2,cls:"input"},
+  {level:2,name:"구독 전환율",val:"77.8%",delta:"후기 -28.8%p",deltaPos:false,tag:"Input",tagBg:c5,tagTxt:c2,cls:"input"},
+  {level:2,name:"체험 전환율",val:"30.0%",delta:"+6.7%p",deltaPos:true,tag:"Input",tagBg:c5,tagTxt:c2,cls:"input"},
+  {level:2,name:"좌절 경험률",val:"27.2%",delta:"-13.6%p",deltaPos:true,tag:"Guardrail",tagBg:"rgba(228,107,115,0.1)",tagTxt:"#ef7d86",cls:"guardrail"},
+  {level:2,name:"액티브 리텐션",val:"60.0%",delta:"-6.7%p",deltaPos:false,tag:"Guardrail",tagBg:"rgba(228,107,115,0.1)",tagTxt:"#ef7d86",cls:"guardrail"},
 ];
 const tree=document.getElementById("metricTree");
 treeData.forEach(d=>{
@@ -538,16 +538,16 @@ treeData.forEach(d=>{
 });
 
 // 리텐션 베이스라인
-const retLabels=["M0","M1","M2","M3","M4","M5","M6","M7","M8"];
-const cohort01=[100,72,58,50,46,43,41,40,40];
-const cohort03=[100,74,62,55,51,49,null,null,null];
-const ideal=[100,75,64,58,55,53,52,51,51];
+const retLabels=["W0","W1","W2","W3","W4","W5"];
+const cohort01=[100,100,100,40,40,40];
+const cohort03=[100,100,65,65,65,null];
+const ideal=[100,100,90,80,78,77];
 new Chart(document.getElementById("retentionChart").getContext("2d"),{
   type:"line",
   data:{labels:retLabels,datasets:[
-    {label:"2024.01 코호트",data:cohort01,borderColor:c2,backgroundColor:"transparent",borderWidth:2,pointRadius:3,tension:.3},
-    {label:"2024.03 코호트",data:cohort03,borderColor:c3,backgroundColor:"transparent",borderWidth:2,pointRadius:3,tension:.3},
-    {label:"이상적 곡선",data:ideal,borderColor:c4,backgroundColor:"transparent",borderWidth:1.5,borderDash:[4,3],pointRadius:0,tension:.3},
+    {label:"5월 1주 코호트",data:cohort01,borderColor:c2,backgroundColor:"transparent",borderWidth:2,pointRadius:3,tension:.3},
+    {label:"5월 3주 코호트",data:cohort03,borderColor:c3,backgroundColor:"transparent",borderWidth:2,pointRadius:3,tension:.3},
+    {label:"목표 곡선",data:ideal,borderColor:c4,backgroundColor:"transparent",borderWidth:1.5,borderDash:[4,3],pointRadius:0,tension:.3},
   ]},
   options:{
     responsive:true,maintainAspectRatio:false,clip:false,
@@ -564,13 +564,12 @@ new Chart(document.getElementById("retentionChart").getContext("2d"),{
 
 // 좌절 경험률 vs 구독 취소율
 const frustData=[
-  {week:"W-6",frust:33.0,churn:3.9},
-  {week:"W-5",frust:35.2,churn:4.4},
-  {week:"W-4",frust:35.2,churn:4.0},
-  {week:"W-3",frust:36.8,churn:4.2},
-  {week:"W-2",frust:38.1,churn:3.9},
-  {week:"W-1",frust:39.4,churn:4.3},
-  {week:"W-0",frust:41.3,churn:4.3},
+  {week:"5/6",frust:0,churn:0},
+  {week:"5/13",frust:37.5,churn:0},
+  {week:"5/20",frust:35.7,churn:0},
+  {week:"5/27",frust:22.7,churn:20.0},
+  {week:"6/3",frust:33.3,churn:25.0},
+  {week:"6/10",frust:11.8,churn:15.5},
 ];
 // 이탈 트렌드 차트
 const churnTrendCtx = document.getElementById("churnTrendChart");
@@ -581,7 +580,7 @@ if(churnTrendCtx){
       labels: frustData.map(d=>d.week),
       datasets: [{
         label: '이탈자 수',
-        data: [438,493,452,471,438,487,487,487],
+        data: [0,0,0,12,17,11],
         borderColor: '#ef7d86',
         backgroundColor: 'rgba(228,107,115,0.08)',
         fill: true,
@@ -614,7 +613,7 @@ if(churnTrendCtx){
 }
 
 // 이탈자 특성: 가입 후 이탈 시점
-const timingData = [{label:'1~2주차',pct:38,color:'#ef7d86'},{label:'3~4주차',pct:29,color:'#F59E0B'},{label:'5~8주차',pct:19,color:'#7ca899'},{label:'9주↑',pct:14,color:c1}];
+const timingData = [{label:'2주차',pct:51,color:'#ef7d86'},{label:'3주차',pct:49,color:'#F59E0B'},{label:'4주차↑',pct:0,color:c1}];
 const timingEl = document.getElementById("churnTimingBars");
 if(timingEl){
   timingData.forEach(d=>{
@@ -627,7 +626,7 @@ if(timingEl){
 }
 
 // 이탈자 특성: 플랜별 분포
-const planData = [{label:'베이직',pct:52,color:'#ef7d86'},{label:'스탠다드',pct:31,color:'#F59E0B'},{label:'프리미엄',pct:17,color:c1}];
+const planData = [{label:'베이직',pct:44,color:'#ef7d86'},{label:'프로',pct:29,color:'#F59E0B'},{label:'프리',pct:27,color:c1}];
 const planEl = document.getElementById("churnPlanBars");
 if(planEl){
   planData.forEach(d=>{
@@ -642,12 +641,12 @@ if(planEl){
 // RFM 세그먼트
 // RFM 트리맵
 const rfmData=[
-  {seg:"이탈 위험",val:28,color:"#ef7d86",textColor:"#fff",desc:"R↓F↓ · 재결제 하락 주범",action:"즉시 개입"},
-  {seg:"성장 가능",val:22,color:"#57b497",textColor:"#fff",desc:"R↑F↑M↓ · 업셀 기회",action:"업셀 캠페인"},
-  {seg:"신규 구독",val:19,color:"#7bc8b3",textColor:"#fff",desc:"신규 · 분리 관리 필수",action:"온보딩 강화"},
-  {seg:"충성 고객",val:14,color:"#35c995",textColor:"#fff",desc:"R↑F↑M↑ · 핵심 유지",action:"리워드 제공"},
-  {seg:"휴면",val:11,color:"#B0C4D8",textColor:"#fff",desc:"R↓↓ · 윈백 가능성 낮음",action:"윈백 시도"},
-  {seg:"복귀 구독",val:6,color:"#C4B5A0",textColor:"#fff",desc:"이탈 후 복귀 · 별도 UX",action:"케어 집중"},
+  {seg:"이탈 위험",val:33,color:"#ef7d86",textColor:"#fff",desc:"이탈·미복귀 · 최대 비중",action:"즉시 개입"},
+  {seg:"신규 구독",val:24,color:"#7bc8b3",textColor:"#fff",desc:"최근 가입 · 온보딩 관리",action:"온보딩 강화"},
+  {seg:"휴면",val:24,color:"#B0C4D8",textColor:"#fff",desc:"가입 후 무활동",action:"활성화 넛지"},
+  {seg:"복귀 구독",val:9,color:"#C4B5A0",textColor:"#fff",desc:"이탈 후 복귀 · 별도 UX",action:"케어 집중"},
+  {seg:"성장 가능",val:8,color:"#57b497",textColor:"#fff",desc:"결제·저빈도 · 업셀 기회",action:"업셀 캠페인"},
+  {seg:"충성 고객",val:2,color:"#35c995",textColor:"#fff",desc:"결제·고빈도 · 핵심 유지",action:"리워드 제공"},
 ];
 
 (function(){
@@ -744,11 +743,11 @@ const rfmData=[
 
 // 이탈 사유 TOP 5
 const causeData=[
-  {rank:1,name:"핵심기능 부족",pct:42,verified:true,action:"콘텐츠 확대",seg:"전체세그먼트",color:"#ef7d86"},
-  {rank:2,name:"이용 빈도 감소",pct:28,verified:true,action:"리인게이지",seg:"베이직플랜",color:"#F59E0B"},
-  {rank:3,name:"가격 불만",pct:24,verified:false,action:"교차 검증 필요",seg:"스탠다드",color:"#D97706"},
-  {rank:4,name:"대체재 발견",pct:18,verified:true,action:"차별화 강화",seg:"3-4주차",color:"#7ca899"},
-  {rank:5,name:"온보딩 실패",pct:12,verified:true,action:"온보딩 개선",seg:"신규가입",color:"#94A3B8"},
+  {rank:1,name:"체험 미시작 이탈",pct:73,verified:true,action:"온보딩 활성화",seg:"전 세그먼트",color:"#ef7d86"},
+  {rank:2,name:"저빈도 이용 (로그인 1회↓)",pct:73,verified:true,action:"리인게이지",seg:"신규 가입",color:"#F59E0B"},
+  {rank:3,name:"미결제 이탈",pct:67,verified:true,action:"가치 조기전달",seg:"Free·Basic",color:"#D97706"},
+  {rank:4,name:"베이직 플랜 집중",pct:44,verified:true,action:"플랜 가치 점검",seg:"베이직",color:"#7ca899"},
+  {rank:5,name:"검색 실패 경험",pct:31,verified:true,action:"콘텐츠 확대",seg:"검색 경험자",color:"#94A3B8"},
 ];
 const cl=document.getElementById("causeList");
 causeData.forEach(d=>{
@@ -777,15 +776,15 @@ causeData.forEach(d=>{
 
 // AI 인사이트
 const aiItems=[
-  {idx:"01",title:"재결제율이 최우선 — 구독자 증감 비율 0.82 긴급",pri:"높음",priBg:"rgba(228,107,115,0.1)",priTxt:"#ef7d86",
-   cells:[{lbl:"이탈 규모",val:"487명/주"},{lbl:"매출 위험",val:"~₩9M/주"},{lbl:"구독자 증감 비율",val:"0.82 (목표>1)"},{lbl:"원인",val:"재결제율 -3.2%p"}],
-   action:"신규 유입 확대 전 재결제율 먼저. 이탈 유저 설문 + 행동 데이터 교차 → 핵심기능 부족이 1위. 4주간 콘텐츠 집중 업로드 실험 후 시계열로 재결제율 변화 추적."},
-  {idx:"02",title:"좌절 경험률 41.3% — 핵심기능 부족 구조적 문제",pri:"높음",priBg:"rgba(228,107,115,0.1)",priTxt:"#ef7d86",
-   cells:[{lbl:"주간 상승폭",val:"+4.1%p"},{lbl:"r(상관계수)",val:"0.89"},{lbl:"취소율 영향",val:"+0.4%p/1%p"},{lbl:"대상 구간",val:"검색 5건 이상"}],
-   action:"<b>검증 방법:</b> A/B 불가(동일 콘텐츠 유저별 차등 제공 불가). 시계열 분석 — 콘텐츠 확대 후 좌절 경험률 감소 → 취소율 감소 순서로 지표 추적."},
-  {idx:"03",title:"복귀 구독자 89명 — 신규와 분리 필수",pri:"중간",priBg:"rgba(87,180,151,0.08)",priTxt:c2,
-   cells:[{lbl:"복귀 규모",val:"89명/주"},{lbl:"신규 대비",val:"22% 수준"},{lbl:"무료체험",val:"제공 불가"},{lbl:"이탈 경험",val:"있음"}],
-   action:"복귀 유저는 신규와 다른 백그라운드. 무료체험 없이 바로 결제 → 재이탈 위험. 온보딩 플로우 분리 + 1:1 케어 담당자 배정."},
+  {idx:"01",title:"활성화 실패가 최우선 — 이탈 73%가 체험조차 안 함",pri:"높음",priBg:"rgba(228,107,115,0.1)",priTxt:"#ef7d86",
+   cells:[{lbl:"이탈 규모",val:"45명 (37.5%)"},{lbl:"집중 시점",val:"가입 2~3주차"},{lbl:"증감 비율",val:"2.91 (건강)"},{lbl:"공통 신호",val:"체험 미시작 73%"}],
+   action:"유입은 충분(증감 2.91 · 순증 +86명) — 문제는 가입 후 활성화. 이탈 100%가 2~3주차 집중 → <b>가입 1~2주 내 핵심기능 미리보기·온보딩 체크리스트</b> 투입. 검증: 온보딩 유무 A/B로 2주차 잔존율 비교(시계열 추적)."},
+  {idx:"02",title:"가입 2~3주차 리텐션 절벽 — 생존율 100 → 56%",pri:"높음",priBg:"rgba(228,107,115,0.1)",priTxt:"#ef7d86",
+   cells:[{lbl:"2주차 생존",val:"77%"},{lbl:"3주차 생존",val:"56%"},{lbl:"4주차↑ 이탈",val:"0%"},{lbl:"대상",val:"전 코호트"}],
+   action:"<b>검증 방법:</b> 3주만 넘기면 이탈 0% → 2~3주차가 유일한 고비. 온보딩 개입을 이 구간에 집중하고, 코호트 생존곡선의 W2–W3 기울기를 주차별로 추적."},
+  {idx:"03",title:"구독 전환율 후기 코호트 -28.8%p · 베이직 이탈 44%",pri:"중간",priBg:"rgba(87,180,151,0.08)",priTxt:c2,
+   cells:[{lbl:"초기 코호트",val:"93.8%"},{lbl:"후기 코호트",val:"65.0%"},{lbl:"베이직 이탈률",val:"37.7%"},{lbl:"관측",val:"절단 주의"}],
+   action:"최근 가입자 결제 전환 급락(우측 절단 감안해도 추세 우려). 베이직 플랜 가치·가격 점검 + 결제 UX 테스트. 절단 영향 배제 위해 <b>동일 가입후 주차 시점</b>으로 코호트 비교."},
 ];
 const al=document.getElementById("aiList");
 aiItems.forEach(item=>{
@@ -800,18 +799,18 @@ aiItems.forEach(item=>{
 
 // Input Metric 상태 테이블
 const metricsTable=[
-  {layer:"Input",name:"재결제율",def:"1 - 구독해지율",curr:"71.4%",target:"78%",prev:"74.6%",delta:"-3.2%p",trend:"down",action:"즉시 개선",ab:"rgba(228,107,115,0.1)",at:"#ef7d86"},
-  {layer:"Input",name:"좌절 경험률",def:"핵심기능 없는 문제/검색",curr:"41.3%",target:"< 25%",prev:"37.2%",delta:"+4.1%p",trend:"down",action:"콘텐츠 확대",ab:"rgba(228,107,115,0.1)",at:"#ef7d86"},
-  {layer:"Input",name:"구독 전환율",def:"결제전환/무료체험완료",curr:"24.6%",target:"28%",prev:"25.4%",delta:"-0.8%p",trend:"down",action:"UX 개선",ab:"rgba(228,107,115,0.1)",at:"#ef7d86"},
-  {layer:"Input",name:"체험 전환율",def:"무료체험/핵심기능미리보기",curr:"38.2%",target:"40%",prev:"36.8%",delta:"+1.4%p",trend:"up",action:"유지",ab:"rgba(69,179,125,0.1)",at:"#35c995"},
-  {layer:"Input",name:"액티브 리텐션",def:"핵심기능사용/W-1구독자",curr:"58.9%",target:"65%",prev:"61.2%",delta:"-2.3%p",trend:"down",action:"재인게이지",ab:"rgba(228,107,115,0.1)",at:"#ef7d86"},
-  {layer:"Primary",name:"구독자 수",def:"신규+복귀+기존-이탈",curr:"3,284명",target:"3,500명",prev:"3,372명",delta:"-88명",trend:"down",action:"Pulse 개선",ab:"rgba(228,107,115,0.1)",at:"#ef7d86"},
-  {layer:"Guardrail",name:"구독자 증감 비율",def:"(신규+복귀)/이탈",curr:"0.82",target:"> 1.0",prev:"0.91",delta:"-0.09",trend:"down",action:"즉시 대응",ab:"rgba(228,107,115,0.1)",at:"#ef7d86"},
-  {layer:"Guardrail",name:"복귀 구독자 비율",def:"복귀/(신규+복귀)",curr:"22.3%",target:"< 30%",prev:"19.8%",delta:"+2.5%p",trend:"warn",action:"분리 관리",ab:"#FFFBEB",at:"#D97706"},
+  {layer:"Input",name:"재결제율",def:"1 - 구독 해지율",curr:"62.5%",target:"75%",prev:"—",delta:"해지 37.5%",trend:"down",action:"온보딩 활성화",ab:"rgba(228,107,115,0.1)",at:"#ef7d86"},
+  {layer:"Input",name:"구독 전환율",def:"결제전환/무료체험완료",curr:"77.8%",target:"85%",prev:"93.8%",delta:"-16.0%p",trend:"down",action:"UX·가격 점검",ab:"rgba(228,107,115,0.1)",at:"#ef7d86"},
+  {layer:"Input",name:"체험 전환율",def:"체험시작/가입자",curr:"30.0%",target:"40%",prev:"26.7%",delta:"+3.3%p",trend:"up",action:"온보딩 강화",ab:"rgba(69,179,125,0.1)",at:"#35c995"},
+  {layer:"Input",name:"좌절 경험률",def:"검색실패/전체검색",curr:"27.2%",target:"< 20%",prev:"36.4%",delta:"-9.2%p",trend:"up",action:"모니터링",ab:"rgba(69,179,125,0.1)",at:"#35c995"},
+  {layer:"Input",name:"액티브 리텐션",def:"로그인 경험/가입자",curr:"60.0%",target:"70%",prev:"63.3%",delta:"-3.3%p",trend:"down",action:"재인게이지",ab:"rgba(228,107,115,0.1)",at:"#ef7d86"},
+  {layer:"Primary",name:"구독자 수",def:"가입-이탈+복귀",curr:"86명",target:"100명",prev:"—",delta:"+86명/6주",trend:"up",action:"성장세 유지",ab:"rgba(69,179,125,0.1)",at:"#35c995"},
+  {layer:"Guardrail",name:"구독자 증감 비율",def:"(신규+복귀)/이탈",curr:"2.91",target:"> 1.0",prev:"—",delta:"건강",trend:"up",action:"유지",ab:"rgba(69,179,125,0.1)",at:"#35c995"},
+  {layer:"Guardrail",name:"복귀 구독자 비율",def:"복귀/(신규+복귀)",curr:"8.4%",target:"< 20%",prev:"—",delta:"11명 복귀",trend:"warn",action:"분리 관리",ab:"#FFFBEB",at:"#D97706"},
 ];
 const mt=document.getElementById("metricTable");
 const layerColors={Input:{bg:"rgba(87,180,151,0.08)",txt:c2},Primary:{bg:"#E0E8F0",txt:c2},Guardrail:{bg:"rgba(228,107,115,0.1)",txt:"#ef7d86"}};
-mt.innerHTML="<thead><tr><th style='text-align:left'>계층</th><th style='text-align:left'>지표</th><th>현재값</th><th>목표</th><th>전주</th><th>변동</th><th style='text-align:left'>권장 액션</th></tr></thead>"+
+mt.innerHTML="<thead><tr><th style='text-align:left'>계층</th><th style='text-align:left'>지표</th><th>현재값</th><th>목표</th><th>초기</th><th>변동</th><th style='text-align:left'>권장 액션</th></tr></thead>"+
   "<tbody>"+metricsTable.map(r=>{
     const lc=layerColors[r.layer];
     const dColor=r.trend==="up"?"#35c995":r.trend==="warn"?"#D97706":"#ef7d86";
