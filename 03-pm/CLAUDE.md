@@ -1,8 +1,20 @@
 # CLAUDE.md — 프로덕트(PM) 지표 위계 대시보드
 
 ## 이 프로젝트의 목표
-`data/`의 프로덕트 지표 CSV를 받아, **이 폴더의 디자인을 그대로 따르는** 지표 위계·원인 분석 대시보드 HTML을 `output/`에 만든다.
+`data/`의 **유저 이벤트 로그 CSV(`user_events.csv`)**를 받아, **이 폴더의 디자인을 그대로 따르는** 지표 위계·원인 분석 대시보드 HTML을 `output/`에 만든다.
 "예쁜 화면"이 아니라 "3초 안에 어떤 Input 지표를 먼저 고쳐야 할지 보이는 화면"을 만든다.
+
+---
+
+## 입력 데이터: 유저 이벤트 로그 → 집계
+입력은 **유저 단위 이벤트 로그**(`user_events.csv`: `user_id, event_date, event, plan, segment`)다.
+`event`는 활동 행동 — `signup`·`login`·`trial_start`·`payment`·`cancel`·`search_fail`.
+리텐션·코호트·이탈·RFM은 **유저 단위라야** 나온다. **행을 일일이 읽지 말고 python(pandas)으로 집계**한다(수백~수천 행이라도 즉시 끝난다). 집계 매핑:
+- **코호트 리텐션 곡선**: `signup` 주차(코호트)별 × 이후 주차별 `login` 유저 수 / 코호트 크기.
+- **RFM(`rfmData`)**: user별 recency(마지막 이벤트)·frequency(이벤트 수)·monetary(`payment` 수) → 6세그먼트 비중(`이탈 위험` 최우선).
+- **이탈 시점(`timingData`)·플랜(`planData`)**: `cancel`(또는 마지막 활동 후 무활동) 유저의 가입 후 경과 주차·plan 분포.
+- **이탈 사유(`causeData`)**: 행동 신호(예: `search_fail` 다발 → 핵심기능 부족)로 근사하고 설문 교차 시 `verified`.
+- **비율 KPI**(이벤트를 집계해 산출): 재결제율=재결제 `payment`/직전 결제자 · 구독전환율=`payment`/`signup` · 체험전환율=`payment`/`trial_start` · 좌절경험률=`search_fail` 유저/활성 유저 · 액티브 리텐션=주간 `login`/W−1 구독자.
 
 ---
 

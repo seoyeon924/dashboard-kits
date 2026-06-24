@@ -16,7 +16,7 @@ claude
 ```
 
 ## 내 데이터로 바꾸기
-`data/product_metrics.csv`를 본인 프로덕트 데이터로 교체하고 다시 `/build-dashboard` 하면 끝.
+`data/user_events.csv`를 본인 이벤트 로그로 교체하고 다시 `/build-dashboard` 하면 끝.
 필요한 컬럼: `date, metric, value, segment, plan, feature`
 (metric 예: 재결제율 / 구독전환율 / 체험전환율 / 좌절경험률 / 액티브리텐션 / 신규·복귀·이탈 구독자 / 세그먼트비중 / 이탈사유 등)
 
@@ -26,7 +26,7 @@ claude
 ├── CLAUDE.md                       # 디자인 헌법 (색·지표 위계·정의·구성 규칙)
 ├── .claude/skills/build-dashboard/ # 작업 절차 (이게 명령어가 됨)
 ├── templates/reference.html        # 품질 기준 = 강사의 완성 대시보드
-├── data/product_metrics.csv        # 샘플 데이터 (여기를 교체)
+├── data/user_events.csv           # 샘플 유저 이벤트 로그 (여기를 교체)
 └── output/                         # 결과물이 여기 생성됨
 ```
 

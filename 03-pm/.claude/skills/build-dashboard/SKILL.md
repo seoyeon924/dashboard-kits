@@ -1,7 +1,7 @@
 ---
 name: build-dashboard
-description: data/의 프로덕트 지표 CSV를 분석해, templates/reference.html과 동일한 퀄리티의 PM 지표 위계·원인 분석 대시보드를 output/에 생성하는 스킬. "대시보드 만들어줘", "/build-dashboard" 시 사용.
-argument-hint: "[CSV 경로 — 생략 시 data/product_metrics.csv]"
+description: data/의 유저 이벤트 로그(user_events.csv)를 집계·분석해, templates/reference.html과 동일한 퀄리티의 PM 지표 위계·원인 분석 대시보드를 output/에 생성하는 스킬. "대시보드 만들어줘", "/build-dashboard" 시 사용.
+argument-hint: "[CSV 경로 — 생략 시 data/user_events.csv]"
 disable-model-invocation: false
 allowed-tools: Read, Glob, Grep, Write, Bash
 ---
@@ -12,7 +12,7 @@ allowed-tools: Read, Glob, Grep, Write, Bash
 **반드시 아래 5단계를 순서대로 수행한다. 단계를 건너뛰지 않는다.**
 
 ## STEP 1 — 데이터 읽기 (EDA)
-- 인자로 받은 CSV(없으면 `data/product_metrics.csv`)를 Read/Bash로 로드.
+- 인자로 받은 CSV(없으면 `data/user_events.csv`)를 로드. **유저 이벤트 로그이므로 행을 다 읽지 말고 python(pandas)으로 집계**한다 — 코호트 리텐션·RFM·이탈 시점/플랜·비율 KPI를 CLAUDE.md의 집계 매핑대로 계산.
 - 컬럼·행 수·지표 목록·기간을 한 줄로 요약해 사용자에게 보여준다.
 - 필수 컬럼 확인: `date, metric, value, segment, plan, feature`.
   - 컬럼명이 다르면 가장 가까운 것에 매핑하고, 매핑 결과를 알려준다.
