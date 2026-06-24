@@ -261,9 +261,10 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
             <div class="card-title">누적 전환율 차이 · 95% 신뢰구간</div>
             <div class="card-sub">일별 노이즈 제거 · 판정 가능 여부 확인용 · 음영=CI 밴드</div>
           </div>
-          <div style="display:flex;gap:5px">
-            <span style="font-size:9px;padding:2px 8px;border-radius:4px;background:var(--bg);border:1px solid var(--border);color:var(--t3)">가입 폼 간소화</span>
-            <span style="font-size:9px;padding:2px 8px;border-radius:4px;background:var(--bg);border:1px solid var(--border);color:var(--t3)">CTA 변경</span>
+          <div style="display:flex;gap:5px;align-items:center">
+            <select id="cumSelA" style="font-size:10px;padding:3px 6px;border-radius:5px;border:1px solid var(--border);background:#fff;color:var(--t2);max-width:118px"></select>
+            <span style="font-size:10px;color:var(--t4)">vs</span>
+            <select id="cumSelB" style="font-size:10px;padding:3px 6px;border-radius:5px;border:1px solid var(--border);background:#fff;color:var(--t2);max-width:118px"></select>
           </div>
         </div>
         <div class="chart-wrap"><canvas id="cumulChart"></canvas></div>
@@ -394,23 +395,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
 <script>
 Chart.defaults.font.family="'Pretendard',-apple-system,sans-serif";
 
-// ── 누적 전환율 차이 + CI 밴드 ──
-const days=Array.from({length:28},(_,i)=>i+1+"일");
-// Experiment 1: 가입 폼 — 누적 차이 (Variant - Control)
-function cumDiff(base,signal,n){
-  let cumC=0,cumV=0,tot=0;
-  return Array.from({length:n},(_,i)=>{
-    cumC+=base+(Math.random()-.5)*.002;
-    cumV+=(base+signal)+(Math.random()-.5)*.002;
-    tot++;
-    return +(cumV/tot - cumC/tot).toFixed(4);
-  });
-}
-const diff1=cumDiff(0.052,0.016,28);
-const diff2=cumDiff(0.032,0.009,28);
-// CI width (approximation: shrinks as n grows)
-const ci1=diff1.map((_,i)=>+(0.015/Math.sqrt(i+1)).toFixed(4));
-const ci2=diff2.map((_,i)=>+(0.010/Math.sqrt(i+1)).toFixed(4));
+// ── 누적 전환율 차이 + CI 밴드 (실험 선택형) ──
+let ci1=[], ci2=[], cumulChartInst=null;
 
 const ciPlugin={
   id:"ciBand",
@@ -449,17 +435,6 @@ const ciPlugin={
       ctx.lineTo(px,py);
     }
     ctx.closePath();ctx.fill();
-    // 영향 이벤트 annotation
-    const events=[{day:7,label:"캠페인 시작"},{day:14,label:"UI 수정"}];
-    events.forEach(e=>{
-      const px=x.getPixelForValue(e.day);
-      ctx.save();
-      ctx.strokeStyle="rgba(100,116,139,.4)";ctx.lineWidth=1;ctx.setLineDash([3,3]);
-      ctx.beginPath();ctx.moveTo(px,chart.chartArea.top);ctx.lineTo(px,chart.chartArea.bottom);ctx.stroke();
-      ctx.font="8px 'Pretendard'";ctx.fillStyle="#64748B";ctx.textAlign="center";
-      ctx.fillText(e.label,px,chart.chartArea.top+8);
-      ctx.restore();
-    });
     ctx.restore();
   }
 };
@@ -476,28 +451,6 @@ const zeroLine={
     ctx.restore();
   }
 };
-new Chart(document.getElementById("cumulChart").getContext("2d"),{
-  type:"line",
-  data:{labels:days,datasets:[
-    {label:"가입 폼 간소화",data:diff1,borderColor:"#4A7AB5",backgroundColor:"transparent",borderWidth:2,pointRadius:0,tension:.3},
-    {label:"CTA 문구 변경",data:diff2,borderColor:"#4A7AB5",backgroundColor:"transparent",borderWidth:1.8,pointRadius:0,tension:.3,borderDash:[4,3]},
-  ]},
-  plugins:[ciPlugin,zeroLine],
-  options:{
-    responsive:true,maintainAspectRatio:false,
-    plugins:{
-      legend:{position:"bottom",labels:{boxWidth:8,font:{size:10},padding:8}},
-      tooltip:{backgroundColor:"#0F172A",mode:"index",intersect:false,callbacks:{
-        label:c=>`${c.dataset.label}: +${(c.raw*100).toFixed(2)}%p (±${(ci1[c.dataIndex]*100).toFixed(2)}%p)`
-      }}
-    },
-    scales:{
-      x:{grid:{color:"#F1F5F9"},ticks:{font:{size:9},maxTicksLimit:8}},
-      y:{grid:{color:"#F1F5F9"},ticks:{font:{size:9},callback:v=>(v*100).toFixed(1)+"%p"},
-        title:{display:true,text:"누적 전환율 차이 (Variant − Control)",font:{size:9},color:"#94A3B8"}}
-    }
-  }
-});
 
 // ── FOREST PLOT (SVG 기반) ──
 const forestData=[
@@ -669,6 +622,56 @@ const tableData=[
   {exp:"이미지 A/B",metric:"CTR",ctrl:"4.10%",variant:"4.60%",abs:"+0.50%p",rel:"+12.2%",ci:"[+3.1%, +21.3%]",pval:"0.021",n:"15,200",runtime:"18일",guardrail:"통과",decision:"hold"},
   {exp:"리뷰 노출",metric:"CVR",ctrl:"2.70%",variant:"2.80%",abs:"+0.10%p",rel:"+3.7%",ci:"[-6.1%, +13.5%]",pval:"0.430",n:"2,100",runtime:"28일",guardrail:"통과",decision:"stop"},
 ];
+/* ── 누적 전환율 차이: 실험 선택형 ── */
+const CUMEXPS = tableData.map(r=>{
+  const D=parseFloat(r.abs)/100;
+  const m=String(r.ci).match(/([-+\d.]+)%,\s*([-+\d.]+)%/);
+  const relHalf=m?(parseFloat(m[2])-parseFloat(m[1]))/2:10;
+  const rel=Math.abs(parseFloat(r.rel))||30;
+  const ciH=Math.max(Math.abs(D)*relHalf/rel, 0.0008);
+  const T=parseInt(r.runtime)||21;
+  return {name:r.exp, D, ciH, T};
+});
+function srnd(s){const x=Math.sin(s*91.7)*1e4;return x-Math.floor(x);}
+function genCum(D,ciH,T){return Array.from({length:T},(_,i)=>{
+  const settle=D*(1-Math.exp(-(i+1)/(T*0.32)));
+  const noise=(srnd((i+1)*(Math.abs(D)*1e5+13))-.5)*ciH*1.3/Math.sqrt(i+1);
+  return +(settle+noise).toFixed(4);});}
+function genCI(ciH,T){return Array.from({length:T},(_,i)=>+(ciH*Math.sqrt(T/(i+1))).toFixed(4));}
+const cuA=document.getElementById("cumSelA"), cuB=document.getElementById("cumSelB");
+cuA.innerHTML=CUMEXPS.map((e,i)=>`<option value="${i}"${i===0?' selected':''}>${e.name}</option>`).join("");
+cuB.innerHTML=CUMEXPS.map((e,i)=>`<option value="${i}"${i===1?' selected':''}>${e.name}</option>`).join("");
+function renderCumul(){
+  const a=CUMEXPS[+cuA.value], b=CUMEXPS[+cuB.value];
+  const T=Math.max(a.T,b.T);
+  const labels=Array.from({length:T},(_,i)=>(i+1)+"일");
+  ci1=genCI(a.ciH,a.T); ci2=genCI(b.ciH,b.T);
+  const d1=genCum(a.D,a.ciH,a.T), d2=genCum(b.D,b.ciH,b.T);
+  if(cumulChartInst){
+    cumulChartInst.data.labels=labels;
+    cumulChartInst.data.datasets[0].data=d1; cumulChartInst.data.datasets[0].label=a.name;
+    cumulChartInst.data.datasets[1].data=d2; cumulChartInst.data.datasets[1].label=b.name;
+    cumulChartInst.update();
+  } else {
+    cumulChartInst=new Chart(document.getElementById("cumulChart").getContext("2d"),{
+      type:"line",
+      data:{labels,datasets:[
+        {label:a.name,data:d1,borderColor:"#4A7AB5",backgroundColor:"transparent",borderWidth:2,pointRadius:0,tension:.3},
+        {label:b.name,data:d2,borderColor:"#7C3AED",backgroundColor:"transparent",borderWidth:1.8,pointRadius:0,tension:.3,borderDash:[4,3]},
+      ]},
+      plugins:[ciPlugin,zeroLine],
+      options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{position:"bottom",labels:{boxWidth:8,font:{size:10},padding:8}},
+          tooltip:{backgroundColor:"#0F172A",mode:"index",intersect:false,callbacks:{
+            label:c=>`${c.dataset.label}: +${(c.raw*100).toFixed(2)}%p (±${(((c.datasetIndex===0?ci1:ci2)[c.dataIndex]||0)*100).toFixed(2)}%p)`}}},
+        scales:{x:{grid:{color:"#F1F5F9"},ticks:{font:{size:9},maxTicksLimit:8}},
+          y:{grid:{color:"#F1F5F9"},ticks:{font:{size:9},callback:v=>(v*100).toFixed(1)+"%p"},
+            title:{display:true,text:"누적 전환율 차이 (Variant − Control)",font:{size:9},color:"#94A3B8"}}}}
+    });
+  }
+}
+cuA.onchange=renderCumul; cuB.onchange=renderCumul; renderCumul();
+
 const tDecLabel={ship:"Ship",hold:"Hold",retest:"Re-test",monitor:"Monitor",stop:"Stop"};
 const t=document.getElementById("decTable");
 t.innerHTML="<thead><tr>"+
