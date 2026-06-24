@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1300">
-<title>A/B 테스트 실험 OS | abtest kit</title>
+<title>A/B 테스트 실험 OS | Analytics</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
@@ -208,7 +208,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
       <h1>A/B 테스트 실험 OS</h1>
       <span class="exp-badge">Frequentist · 양측검정 · α=0.05</span>
     </div>
-    <span class="meta">2026.04.01 – 2026.06.15 · 18개 실험</span>
+    <span class="meta">2026.06.24 분석 기준 · 18개 실험 · 운영 10–28일</span>
     <div class="topbar-actions">
       <button class="btn-sm btn-outline">CSV 내보내기</button>
       <button class="btn-sm btn-primary">+ 새 실험</button>
@@ -222,32 +222,32 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
       <div class="kpi">
         <div class="kpi-lbl">Active Experiments</div>
         <div class="kpi-val">18</div>
-        <div class="kpi-sub"><span class="badge bc">진행중 3</span></div>
+        <div class="kpi-sub"><span class="badge bc">분석 완료 18</span></div>
       </div>
       <div class="kpi">
         <div class="kpi-lbl">Decision-Ready</div>
-        <div class="kpi-val" style="color:var(--green)">6</div>
-        <div class="kpi-sub"><span class="badge bg">배포 가능</span></div>
+        <div class="kpi-val" style="color:var(--green)">7</div>
+        <div class="kpi-sub"><span class="badge bg">Ship 6 · Hold 1</span></div>
       </div>
       <div class="kpi">
         <div class="kpi-lbl">Guardrail Pass Rate</div>
         <div class="kpi-val">88.9%</div>
-        <div class="kpi-sub"><span class="badge bg">11/12 통과</span></div>
+        <div class="kpi-sub"><span class="badge bg">16/18 통과</span></div>
       </div>
       <div class="kpi">
         <div class="kpi-lbl">Risk Alerts</div>
         <div class="kpi-val" style="color:var(--red)">2</div>
-        <div class="kpi-sub"><span class="badge br">즉시 확인</span></div>
+        <div class="kpi-sub"><span class="badge br">SRM · AOV↓</span></div>
       </div>
       <div class="kpi">
         <div class="kpi-lbl">검증 완료율</div>
-        <div class="kpi-val">39%</div>
-        <div class="kpi-sub"><span class="badge bw">목표 80%</span></div>
+        <div class="kpi-val">61%</div>
+        <div class="kpi-sub"><span class="badge bw">확정 11/18</span></div>
       </div>
       <div class="kpi">
         <div class="kpi-lbl">Incremental Revenue</div>
-        <div class="kpi-val">₩25M</div>
-        <div class="kpi-sub"><span class="badge bg">▲ +18.3%</span></div>
+        <div class="kpi-val">₩22M</div>
+        <div class="kpi-sub"><span class="badge bg">▲ +22.7% (Ship)</span></div>
       </div>
     </div>
 
@@ -263,7 +263,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
           </div>
           <div style="display:flex;gap:5px">
             <span style="font-size:9px;padding:2px 8px;border-radius:4px;background:var(--bg);border:1px solid var(--border);color:var(--t3)">가입 폼 간소화</span>
-            <span style="font-size:9px;padding:2px 8px;border-radius:4px;background:var(--bg);border:1px solid var(--border);color:var(--t3)">CTA 변경</span>
+            <span style="font-size:9px;padding:2px 8px;border-radius:4px;background:var(--bg);border:1px solid var(--border);color:var(--t3)">랜딩 CTA 문구</span>
           </div>
         </div>
         <div class="chart-wrap"><canvas id="cumulChart"></canvas></div>
@@ -282,40 +282,40 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
           <div class="warn-item error">
             <span class="warn-icon">[!]</span>
             <div class="warn-body">
-              <div class="warn-title">SRM 감지 — 팝업 타이밍 실험</div>
-              <div class="warn-desc">Control 52.3% / Variant 47.7% · χ²=8.4, p=0.004</div>
+              <div class="warn-title">SRM 플래그 — 팝업 타이밍 실험</div>
+              <div class="warn-desc">guardrail=SRM · 할당 2,720/2,780 · 노출 단위 정합성 실패 → 결과 무효</div>
             </div>
-            <span class="warn-badge" style="background:var(--red-bg);color:var(--red)">즉시 중단</span>
+            <span class="warn-badge" style="background:var(--red-bg);color:var(--red)">재실험</span>
           </div>
-          <div class="warn-item warn">
+          <div class="warn-item error">
             <span class="warn-icon">[-]</span>
             <div class="warn-body">
               <div class="warn-title">Guardrail 악화 — 체크아웃 흐름</div>
-              <div class="warn-desc">AOV -₩4,200 (-2.1%) · 95% CI [-4.0%, -0.2%] 유의</div>
+              <div class="warn-desc">AOV ₩90,000 → ₩80,000 (-11.1%) · CVR +22.9%는 p=0.132 비유의</div>
             </div>
             <span class="warn-badge" style="background:#EEF2F8;color:#2E3B55">모니터링</span>
           </div>
           <div class="warn-item warn">
             <span class="warn-icon">[S]</span>
             <div class="warn-body">
-              <div class="warn-title">표본 부족 — 추천 위젯</div>
-              <div class="warn-desc">현재 4,200 / 필요 8,000 · 파워 52% (목표 80%)</div>
+              <div class="warn-title">표본 부족 — 추천 위젯 · 리뷰 노출</div>
+              <div class="warn-desc">각 N≈4,200 / 4,100 · p=0.36 / 0.82 · CI가 0을 포함 (검정력 부족)</div>
             </div>
-            <span class="warn-badge" style="background:#EEF2F8;color:#2E3B55">7일 추가</span>
+            <span class="warn-badge" style="background:#EEF2F8;color:#2E3B55">표본 연장</span>
           </div>
           <div class="warn-item info">
             <span class="warn-icon">[Q]</span>
             <div class="warn-body">
               <div class="warn-title">다중 비교 보정 적용</div>
-              <div class="warn-desc">Benjamini-Hochberg · 보정 후 유의 실험 6/12 유지</div>
+              <div class="warn-desc">Benjamini-Hochberg (FDR 0.05) · 원자료 유의 7/18 → 보정 후 6/18 유지</div>
             </div>
             <span class="warn-badge" style="background:#EEF2F8;color:#2E3B55">정상</span>
           </div>
           <div class="warn-item ok">
             <span class="warn-icon">[OK]</span>
             <div class="warn-body">
-              <div class="warn-title">노벨티 효과 없음 확인</div>
-              <div class="warn-desc">가입 폼 실험 · 14일차 이후 효과 안정 유지 확인</div>
+              <div class="warn-title">상위 실험 안정성 확인</div>
+              <div class="warn-desc">가입 폼·랜딩 CTA · 21–24일 운영 · CI가 0을 명확히 배제 (Ship 가능)</div>
             </div>
             <span class="warn-badge" style="background:var(--green-bg);color:var(--green)">검증됨</span>
           </div>
@@ -386,95 +386,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;m
     </div>
 
 
-    <!-- STEP GUIDE -->
-    <div class="step-guide">
-      <div class="step-guide-hd">
-        <div class="step-guide-icon">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        </div>
-        <div>
-          <div class="step-guide-title">분석 스텝 가이드 · A/B 테스트 실험 OS</div>
-          <div class="step-guide-sub">이 대시보드를 어떻게 읽을까? — 스토리라인 · 인터랙션 · 전문가 질문</div>
-        </div>
-      </div>
-      <div class="step-guide-body">
-        <div>
-          <div class="step-col-title">분석 스토리라인</div>
-          <div class="step-flow">
-            <div class="step-flow-item">
-              <div class="step-fn">!</div>
-              <div class="step-ft"><b>실험 품질 경고 먼저</b> — SRM · 노벨티 효과 · 표본 부족 여부 확인 (오염된 실험은 분석 무의미)</div>
-            </div>
-            <div class="step-flow-item"><div class="step-arrow">↓</div></div>
-            <div class="step-flow-item">
-              <div class="step-fn">1</div>
-              <div class="step-ft"><b>누적 전환율 + 신뢰구간</b> — 가설 방향이 맞는가? CI 밴드가 0을 포함하는가?</div>
-            </div>
-            <div class="step-flow-item"><div class="step-arrow">↓</div></div>
-            <div class="step-flow-item">
-              <div class="step-fn">2-3</div>
-              <div class="step-ft"><b>효과 크기 + 세그먼트</b> — 전체 효과가 특정 세그먼트에 집중되지 않는가?</div>
-            </div>
-            <div class="step-flow-item"><div class="step-arrow">↓</div></div>
-            <div class="step-flow-item">
-              <div class="step-fn">4-5</div>
-              <div class="step-ft"><b>AI 판정 + 의사결정 테이블</b> — Guardrail 지표 이상 없이 Rollout 여부 결정</div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="step-col-title">주요 인터랙션</div>
-          <div class="step-iact">
-            <div class="step-iact-item">
-              <div class="step-iact-ic"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-              <div class="step-iact-txt"><b>경고 배지</b> — 빨간 ! 카드 먼저 확인 → 품질 이슈 해결 전 판정 보류</div>
-            </div>
-            <div class="step-iact-item">
-              <div class="step-iact-ic"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
-              <div class="step-iact-txt"><b>Forest Plot 점</b> — CI 바가 0선과 겹치면 통계적 비유의 → 의사결정 보류</div>
-            </div>
-            <div class="step-iact-item">
-              <div class="step-iact-ic"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><circle cx="8" cy="8" r="4"/><circle cx="16" cy="16" r="4"/></svg></div>
-              <div class="step-iact-txt"><b>버블 차트</b> — 버블 크기=표본 · X=Uplift · Y=신뢰도 → 우상단이 이상적</div>
-            </div>
-            <div class="step-iact-item">
-              <div class="step-iact-ic"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
-              <div class="step-iact-txt"><b>Decision 배지</b> — 초록=Rollout / 노랑=보류 / 빨강=중단 → 즉시 실행 가능 판정</div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="step-col-title">전문가 질문 (면접 · 분석 심화)</div>
-          <div class="step-q">
-            <div class="step-q-item">
-              <div class="step-q-num">Q1 · 통계 검정</div>
-              <div class="step-q-txt">p-value < 0.05이지만 Practical Significance가 없는 경우, 어떻게 의사결정을 내려야 하나요? Effect Size(Cohen's d)와의 관계는?</div>
-              <div class="step-q-hint">통계적 유의성 ≠ 비즈니스 유의성 · MDE(Minimum Detectable Effect) 설정 중요</div>
-            </div>
-            <div class="step-q-item">
-              <div class="step-q-num">Q2 · 실험 설계</div>
-              <div class="step-q-txt">Sample Ratio Mismatch(SRM)가 발생하는 주요 원인 3가지와 탐지 방법(Chi-square test 활용)을 설명하세요.</div>
-              <div class="step-q-hint">트래킹 버그 · 봇 트래픽 · 쿠키 삭제 → 실험 단위 재검토</div>
-            </div>
-            <div class="step-q-item">
-              <div class="step-q-num">Q3 · 다중 비교</div>
-              <div class="step-q-txt">Multiple Testing Problem에서 FWER 제어(Bonferroni)와 FDR 제어(Benjamini-Hochberg)의 적용 기준 차이는?</div>
-              <div class="step-q-hint">FWER = 하나라도 오탐 방지 · FDR = 전체 오탐 비율 허용 · 탐색 vs 확증 실험 구분</div>
-            </div>
-            <div class="step-q-item">
-              <div class="step-q-num">Q4 · Guardrail 지표</div>
-              <div class="step-q-txt">Primary Metric 개선 시 Guardrail Metric이 악화되는 경우, 실험 결과를 어떻게 처리하나요?</div>
-              <div class="step-q-hint">Rollout 중단 · Guardrail 손상 원인 분석 → 트레이드오프 정량화 후 재설계</div>
-            </div>
-            <div class="step-q-item">
-              <div class="step-q-num">Q5 · 세그먼트 분석</div>
-              <div class="step-q-txt">Heterogeneous Treatment Effect(HTE) 탐지 시 서브그룹 분석의 통계적 함정은? Causal Forest 적용 기준은?</div>
-              <div class="step-q-hint">다중 비교 오류 + 사후 세그멘테이션 편향 → 사전 등록된 가설만 확증적으로 해석</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
   </div>
 </div>
@@ -495,9 +406,10 @@ function cumDiff(base,signal,n){
     return +(cumV/tot - cumC/tot).toFixed(4);
   });
 }
-const diff1=[0.0099, 0.0101, 0.0103, 0.0106, 0.0108, 0.011, 0.0113, 0.0115, 0.0117, 0.0119, 0.0122, 0.0124, 0.0126, 0.0129, 0.0131, 0.0133, 0.0135, 0.0138, 0.014, 0.0142, 0.0145, 0.0147, 0.0149, 0.0152, 0.0154, 0.0156, 0.0158, 0.0161];
-const diff2=[0.0055, 0.0056, 0.0057, 0.0059, 0.006, 0.0061, 0.0062, 0.0064, 0.0065, 0.0066, 0.0068, 0.0069, 0.007, 0.0071, 0.0073, 0.0074, 0.0075, 0.0077, 0.0078, 0.0079, 0.008, 0.0082, 0.0083, 0.0084, 0.0085, 0.0087, 0.0088, 0.0089];
-// CI width (approximation: shrinks as n grows)
+// 대표 실험 2개: base=CVR(A), signal=절대 Δ(%p, 소수) — 실제 계산값
+const diff1=cumDiff(0.0511,0.0161,28); // 가입 폼 간소화: +1.61%p 수렴
+const diff2=cumDiff(0.0321,0.0089,28); // 랜딩 CTA 문구: +0.89%p 수렴
+// 95% CI 밴드 — 누적표본 증가에 따라 1/√n 로 수축 (초기엔 0을 포함, 점차 배제)
 const ci1=diff1.map((_,i)=>+(0.015/Math.sqrt(i+1)).toFixed(4));
 const ci2=diff2.map((_,i)=>+(0.010/Math.sqrt(i+1)).toFixed(4));
 
@@ -569,7 +481,7 @@ new Chart(document.getElementById("cumulChart").getContext("2d"),{
   type:"line",
   data:{labels:days,datasets:[
     {label:"가입 폼 간소화",data:diff1,borderColor:"#4A7AB5",backgroundColor:"transparent",borderWidth:2,pointRadius:0,tension:.3},
-    {label:"CTA 문구 변경",data:diff2,borderColor:"#4A7AB5",backgroundColor:"transparent",borderWidth:1.8,pointRadius:0,tension:.3,borderDash:[4,3]},
+    {label:"랜딩 CTA 문구",data:diff2,borderColor:"#4A7AB5",backgroundColor:"transparent",borderWidth:1.8,pointRadius:0,tension:.3,borderDash:[4,3]},
   ]},
   plugins:[ciPlugin,zeroLine],
   options:{
@@ -589,13 +501,28 @@ new Chart(document.getElementById("cumulChart").getContext("2d"),{
 });
 
 // ── FOREST PLOT (SVG 기반) ──
-const forestData=[{"name": "가입 폼 간소화", "effect": 31.4, "ci": [18.2, 44.6], "n": 18770, "sig": true, "decision": "ship"}, {"name": "랜딩 CTA 문구", "effect": 27.8, "ci": [13.2, 42.5], "n": 24400, "sig": true, "decision": "ship"}, {"name": "체크아웃 흐름", "effect": 22.9, "ci": [-6.9, 52.8], "n": 3800, "sig": false, "decision": "monitor"}, {"name": "가격 표시 방식", "effect": 22.1, "ci": [5.4, 38.8], "n": 21300, "sig": true, "decision": "ship"}, {"name": "소셜증거 배치", "effect": 19.9, "ci": [4.3, 35.5], "n": 23070, "sig": true, "decision": "ship"}, {"name": "무료배송 배너", "effect": 18.0, "ci": [4.1, 31.8], "n": 16420, "sig": true, "decision": "ship"}, {"name": "필터 UI 개선", "effect": 17.1, "ci": [-1.2, 35.3], "n": 11970, "sig": false, "decision": "monitor"}, {"name": "추천 위젯", "effect": 16.5, "ci": [-18.8, 51.8], "n": 4200, "sig": false, "decision": "monitor"}, {"name": "장바구니 배지", "effect": 16.3, "ci": [-5.4, 38.1], "n": 11320, "sig": false, "decision": "monitor"}, {"name": "팝업 타이밍", "effect": 15.6, "ci": [-33.9, 65.1], "n": 5500, "sig": false, "decision": "retest"}, {"name": "메일 제목 A/B", "effect": 15.2, "ci": [12.7, 17.7], "n": 88000, "sig": true, "decision": "ship"}, {"name": "이미지 A/B", "effect": 12.3, "ci": [1.2, 23.3], "n": 31200, "sig": true, "decision": "hold"}, {"name": "위시리스트 버튼", "effect": 10.9, "ci": [-16.0, 37.8], "n": 7760, "sig": false, "decision": "monitor"}, {"name": "버튼 컬러", "effect": 10.8, "ci": [-4.2, 25.8], "n": 19800, "sig": false, "decision": "monitor"}, {"name": "챗봇 위치", "effect": 5.7, "ci": [-20.9, 32.4], "n": 12200, "sig": false, "decision": "stop"}, {"name": "리뷰 노출", "effect": 4.4, "ci": [-32.7, 41.6], "n": 4100, "sig": false, "decision": "stop"}, {"name": "검색 자동완성", "effect": 3.8, "ci": [-12.8, 20.4], "n": 12680, "sig": false, "decision": "stop"}, {"name": "온보딩 투어", "effect": -5.5, "ci": [-29.2, 18.2], "n": 8920, "sig": false, "decision": "stop"}];
+const forestData=[
+  {name:"가입 폼 간소화",effect:31.4,ci:[18.2,44.6],n:18770,sig:true,decision:"ship"},
+  {name:"랜딩 CTA 문구",effect:27.8,ci:[13.2,42.5],n:24400,sig:true,decision:"ship"},
+  {name:"체크아웃 흐름",effect:22.9,ci:[-6.9,52.8],n:3800,sig:false,decision:"monitor"},
+  {name:"가격 표시 방식",effect:22.1,ci:[5.4,38.8],n:21300,sig:true,decision:"ship"},
+  {name:"소셜증거 배치",effect:19.9,ci:[4.3,35.5],n:23070,sig:true,decision:"ship"},
+  {name:"무료배송 배너",effect:18.0,ci:[4.1,31.8],n:16420,sig:true,decision:"ship"},
+  {name:"필터 UI 개선",effect:17.1,ci:[-1.2,35.4],n:11970,sig:false,decision:"monitor"},
+  {name:"추천 위젯",effect:16.5,ci:[-18.8,51.8],n:4200,sig:false,decision:"monitor"},
+  {name:"장바구니 배지",effect:16.3,ci:[-5.4,38.1],n:11320,sig:false,decision:"monitor"},
+  {name:"팝업 타이밍",effect:15.6,ci:[-33.9,65.1],n:5500,sig:false,decision:"retest"},
+  {name:"메일 제목 A/B",effect:15.2,ci:[12.7,17.7],n:88000,sig:true,decision:"ship"},
+  {name:"이미지 A/B",effect:12.3,ci:[1.2,23.3],n:31200,sig:true,decision:"hold"},
+  {name:"위시리스트 버튼",effect:10.9,ci:[-16.0,37.8],n:7760,sig:false,decision:"monitor"},
+  {name:"버튼 컬러",effect:10.8,ci:[-4.2,25.8],n:19800,sig:false,decision:"monitor"},
+];
 const decisionColors={ship:"#10B981",hold:"#4A7AB5",retest:"#4A5F80",monitor:"#6B7280",stop:"#EF4444"};
 const fp=document.getElementById("forestPlot");
 const W=fp.clientWidth||580,H=fp.clientHeight||200;
 const marginL=150,marginR=80,plotW=W-marginL-marginR;
 const rowH=(H-20)/(forestData.length);
-const minE=-10,maxE=55;
+const minE=-40,maxE=70;
 function toX(v){return marginL+(v-minE)/(maxE-minE)*plotW;}
 let svgRows="";
 forestData.forEach((d,i)=>{
@@ -617,7 +544,7 @@ forestData.forEach((d,i)=>{
 const zeroX=toX(0);
 svgRows+=`<line x1="${zeroX}" y1="4" x2="${zeroX}" y2="${H-4}" stroke="#EF4444" stroke-width="1" stroke-dasharray="3,3" opacity=".7"/>`;
 // x-axis labels
-[-10,0,10,20,30,40,50].forEach(v=>{
+[-40,-20,0,20,40,60].forEach(v=>{
   const px=toX(v);
   svgRows+=`<text x="${px}" y="${H-2}" font-size="8" fill="#94A3B8" text-anchor="middle" font-family="Pretendard">${v>0?"+":""}${v}%</text>`;
   if(v!==0)svgRows+=`<line x1="${px}" y1="4" x2="${px}" y2="${H-10}" stroke="#F1F5F9" stroke-width="1"/>`;
@@ -625,7 +552,16 @@ svgRows+=`<line x1="${zeroX}" y1="4" x2="${zeroX}" y2="${H-4}" stroke="#EF4444" 
 fp.innerHTML=`<svg width="100%" height="100%" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">${svgRows}</svg>`;
 
 // ── 세그먼트 스캐터: X=uplift, Y=confidence%, size=sample ──
-const segData=[{"x": 16.5, "y": 99, "r": 20, "label": "메일 제목 ·이메일", "status": "safe"}, {"x": 13.9, "y": 99, "r": 20, "label": "메일 제목 ·재방문", "status": "safe"}, {"x": 10.8, "y": 84.0, "r": 20, "label": "버튼 컬러·전체", "status": "low"}, {"x": 18.0, "y": 99.0, "r": 16, "label": "무료배송 배·전체", "status": "safe"}, {"x": 12.3, "y": 88.0, "r": 16, "label": "이미지 A/·모바일", "status": "needs"}, {"x": 12.3, "y": 88.0, "r": 16, "label": "이미지 A/·PC", "status": "needs"}, {"x": 3.8, "y": 34.0, "r": 13, "label": "검색 자동완·전체", "status": "explore"}, {"x": 33.4, "y": 99, "r": 12, "label": "소셜증거 배·신규방문", "status": "safe"}, {"x": 27.8, "y": 99, "r": 12, "label": "랜딩 CTA·모바일", "status": "safe"}];
+const segData=[
+  {x:43.7,y:100,r:9,label:"가입폼·모바일",status:"safe"},
+  {x:33.4,y:99.7,r:10,label:"소셜·신규",status:"safe"},
+  {x:27.9,y:99.2,r:10,label:"랜딩·PC",status:"safe"},
+  {x:16.5,y:100,r:19,label:"메일",status:"safe"},
+  {x:23.2,y:94.5,r:9,label:"가격·모바일",status:"needs"},
+  {x:16.5,y:64.1,r:6,label:"추천위젯",status:"low"},
+  {x:4.7,y:32.5,r:9,label:"소셜·재방문",status:"explore"},
+  {x:-5.5,y:35.1,r:9,label:"온보딩·신규",status:"explore"},
+];
 const statusColors={safe:"#10B981",needs:"#4A7AB5",low:"#A8B8E0",explore:"#EF4444"};
 const segLabelPlugin={id:"sL",afterDraw(chart){
   const{ctx,scales:{x,y},chartArea}=chart;
@@ -667,14 +603,36 @@ new Chart(document.getElementById("segChart").getContext("2d"),{
       label:c=>`Uplift: +${c.parsed.x}% | 신뢰도: ${c.parsed.y}% | n≈${c.raw.r*500}`
     }}},
     scales:{
-      x:{grid:{color:"#F1F5F9"},ticks:{font:{size:9},callback:v=>"+"+v+"%"},title:{display:true,text:"Relative Uplift",font:{size:9},color:"#94A3B8"},min:-8,max:42},
-      y:{grid:{color:"#F1F5F9"},ticks:{font:{size:9},callback:v=>v+"%"},title:{display:true,text:"통계적 신뢰도 (%)",font:{size:9},color:"#94A3B8"},min:38,max:105}
+      x:{grid:{color:"#F1F5F9"},ticks:{font:{size:9},callback:v=>(v>0?"+":"")+v+"%"},title:{display:true,text:"Relative Uplift",font:{size:9},color:"#94A3B8"},min:-10,max:48},
+      y:{grid:{color:"#F1F5F9"},ticks:{font:{size:9},callback:v=>v+"%"},title:{display:true,text:"통계적 신뢰도 (%)",font:{size:9},color:"#94A3B8"},min:28,max:105}
     }
   }
 });
 
 // ── AI 인사이트 (근거+제약+액션) ──
-const aiItems=[{"idx": "01", "name": "가입 폼 간소화", "decision": "Ship", "decClass": "d-ship", "metric": {"primary": "CVR +31.4%", "ci": "95% CI [18.2%, 44.6%]", "pval": "p <0.001", "n": "N=18,770"}, "constraint": "유의 · 표본 충분", "risk": "Guardrail 통과 [OK]", "action": "증분 매출 ₩6.5M 추정 · 전체 배포"}, {"idx": "02", "name": "랜딩 CTA 문구", "decision": "Ship", "decClass": "d-ship", "metric": {"primary": "CVR +27.8%", "ci": "95% CI [13.2%, 42.5%]", "pval": "p <0.001", "n": "N=24,400"}, "constraint": "유의 · 표본 충분", "risk": "Guardrail 통과 [OK]", "action": "증분 매출 ₩4.0M 추정 · 전체 배포"}, {"idx": "03", "name": "가격 표시 방식", "decision": "Ship", "decClass": "d-ship", "metric": {"primary": "CVR +22.1%", "ci": "95% CI [5.4%, 38.8%]", "pval": "p = 0.009", "n": "N=21,300"}, "constraint": "유의 · 표본 충분", "risk": "Guardrail 통과 [OK]", "action": "증분 매출 ₩3.7M 추정 · 전체 배포"}];
+const aiItems=[
+  {
+    idx:"01",name:"가입 폼 간소화",decision:"Ship",decClass:"d-ship",
+    metric:{primary:"CVR +31.4%",ci:"95% CI [+18.2%, +44.6%]",pval:"p < 0.001",n:"N=18,770"},
+    constraint:"모바일 +43.7% 강함 · PC +15.5%로 상대적으로 약함",
+    risk:"Guardrail 통과 · 21일 운영 효과 안정 [OK]",
+    action:"모바일 100% 즉시 배포 · PC는 단계적(Canary) 롤아웃"
+  },
+  {
+    idx:"02",name:"랜딩 CTA 문구",decision:"Ship",decClass:"d-ship",
+    metric:{primary:"CVR +27.8%",ci:"95% CI [+13.2%, +42.5%]",pval:"p < 0.001",n:"N=24,400"},
+    constraint:"PC +27.9% / 모바일 +27.8% — 세그먼트 간 효과 균일",
+    risk:"Guardrail 통과 · 24일 운영으로 노벨티 효과 배제 [OK]",
+    action:"PC·모바일 전체 100% 배포 · 추가 분기 불필요"
+  },
+  {
+    idx:"03",name:"체크아웃 흐름",decision:"Monitor",decClass:"d-monitor",
+    metric:{primary:"CVR +22.9%",ci:"95% CI [-6.9%, +52.8%]",pval:"p = 0.132",n:"N=3,800"},
+    constraint:"표본 부족 — CI가 0을 포함, 통계적 비유의 (12일 운영)",
+    risk:"⚠ AOV ₩90,000 → ₩80,000 (-11.1%) · Guardrail 악화",
+    action:"배포 보류 · AOV 하락 원인 분석 후 표본 연장 재실험"
+  },
+];
 const aiList=document.getElementById("aiList");
 aiItems.forEach(item=>{
   const div=document.createElement("div");div.className="ai-item";
@@ -699,7 +657,26 @@ aiItems.forEach(item=>{
 });
 
 // ── 의사결정 테이블 ──
-const tableData=[{"exp": "가입 폼 간소화", "metric": "CVR", "ctrl": "5.11%", "variant": "6.72%", "abs": "+1.61%p", "rel": "+31.4%", "ci": "[+18.2%, +44.6%]", "pval": "<0.001", "n": "18,770", "runtime": "21일", "guardrail": "통과", "decision": "ship"}, {"exp": "랜딩 CTA 문구", "metric": "CVR", "ctrl": "3.21%", "variant": "4.10%", "abs": "+0.89%p", "rel": "+27.8%", "ci": "[+13.2%, +42.5%]", "pval": "<0.001", "n": "24,400", "runtime": "24일", "guardrail": "통과", "decision": "ship"}, {"exp": "체크아웃 흐름", "metric": "CVR", "ctrl": "4.79%", "variant": "5.89%", "abs": "+1.10%p", "rel": "+22.9%", "ci": "[-6.9%, +52.8%]", "pval": "0.132", "n": "3,800", "runtime": "12일", "guardrail": "❌ AOV↓", "decision": "monitor"}, {"exp": "가격 표시 방식", "metric": "CVR", "ctrl": "2.79%", "variant": "3.41%", "abs": "+0.62%p", "rel": "+22.1%", "ci": "[+5.4%, +38.8%]", "pval": "0.009", "n": "21,300", "runtime": "19일", "guardrail": "통과", "decision": "ship"}, {"exp": "소셜증거 배치", "metric": "CVR", "ctrl": "2.90%", "variant": "3.48%", "abs": "+0.58%p", "rel": "+19.9%", "ci": "[+4.3%, +35.5%]", "pval": "0.012", "n": "23,070", "runtime": "18일", "guardrail": "통과", "decision": "ship"}, {"exp": "무료배송 배너", "metric": "CVR", "ctrl": "5.00%", "variant": "5.90%", "abs": "+0.90%p", "rel": "+18.0%", "ci": "[+4.1%, +31.8%]", "pval": "0.011", "n": "16,420", "runtime": "22일", "guardrail": "통과", "decision": "ship"}, {"exp": "필터 UI 개선", "metric": "CVR", "ctrl": "3.99%", "variant": "4.68%", "abs": "+0.68%p", "rel": "+17.1%", "ci": "[-1.2%, +35.3%]", "pval": "0.067", "n": "11,970", "runtime": "19일", "guardrail": "통과", "decision": "monitor"}, {"exp": "추천 위젯", "metric": "CVR", "ctrl": "3.08%", "variant": "3.58%", "abs": "+0.51%p", "rel": "+16.5%", "ci": "[-18.8%, +51.8%]", "pval": "0.359", "n": "4,200", "runtime": "10일", "guardrail": "통과", "decision": "monitor"}, {"exp": "장바구니 배지", "metric": "CVR", "ctrl": "3.00%", "variant": "3.49%", "abs": "+0.49%p", "rel": "+16.3%", "ci": "[-5.4%, +38.1%]", "pval": "0.141", "n": "11,320", "runtime": "13일", "guardrail": "통과", "decision": "monitor"}, {"exp": "팝업 타이밍", "metric": "CVR", "ctrl": "1.21%", "variant": "1.40%", "abs": "+0.19%p", "rel": "+15.6%", "ci": "[-33.9%, +65.1%]", "pval": "0.536", "n": "5,500", "runtime": "16일", "guardrail": "⚠ SRM", "decision": "retest"}, {"exp": "메일 제목 A/B", "metric": "CVR", "ctrl": "22.70%", "variant": "26.15%", "abs": "+3.45%p", "rel": "+15.2%", "ci": "[+12.7%, +17.7%]", "pval": "<0.001", "n": "88,000", "runtime": "14일", "guardrail": "통과", "decision": "ship"}, {"exp": "이미지 A/B", "metric": "CVR", "ctrl": "4.10%", "variant": "4.60%", "abs": "+0.50%p", "rel": "+12.3%", "ci": "[+1.2%, +23.3%]", "pval": "0.029", "n": "31,200", "runtime": "18일", "guardrail": "통과", "decision": "hold"}, {"exp": "위시리스트 버튼", "metric": "CVR", "ctrl": "2.80%", "variant": "3.10%", "abs": "+0.30%p", "rel": "+10.9%", "ci": "[-16.0%, +37.8%]", "pval": "0.428", "n": "7,760", "runtime": "17일", "guardrail": "통과", "decision": "monitor"}, {"exp": "버튼 컬러", "metric": "CVR", "ctrl": "3.50%", "variant": "3.88%", "abs": "+0.38%p", "rel": "+10.8%", "ci": "[-4.2%, +25.8%]", "pval": "0.160", "n": "19,800", "runtime": "21일", "guardrail": "통과", "decision": "monitor"}, {"exp": "챗봇 위치", "metric": "CVR", "ctrl": "1.79%", "variant": "1.90%", "abs": "+0.10%p", "rel": "+5.7%", "ci": "[-20.9%, +32.4%]", "pval": "0.673", "n": "12,200", "runtime": "28일", "guardrail": "통과", "decision": "stop"}, {"exp": "리뷰 노출", "metric": "CVR", "ctrl": "2.70%", "variant": "2.82%", "abs": "+0.12%p", "rel": "+4.4%", "ci": "[-32.7%, +41.6%]", "pval": "0.815", "n": "4,100", "runtime": "28일", "guardrail": "통과", "decision": "stop"}, {"exp": "검색 자동완성", "metric": "CVR", "ctrl": "4.29%", "variant": "4.45%", "abs": "+0.16%p", "rel": "+3.8%", "ci": "[-12.8%, +20.4%]", "pval": "0.656", "n": "12,680", "runtime": "20일", "guardrail": "통과", "decision": "stop"}, {"exp": "온보딩 투어", "metric": "CVR", "ctrl": "2.91%", "variant": "2.75%", "abs": "-0.16%p", "rel": "-5.5%", "ci": "[-29.2%, +18.2%]", "pval": "0.649", "n": "8,920", "runtime": "15일", "guardrail": "통과", "decision": "stop"}];
+const tableData=[
+  {exp:"가입 폼 간소화",metric:"CVR",ctrl:"5.11%",variant:"6.72%",abs:"+1.61%p",rel:"+31.4%",ci:"[+18.2%, +44.6%]",pval:"<0.001",n:"18,770",runtime:"21일",guardrail:"통과",decision:"ship"},
+  {exp:"랜딩 CTA 문구",metric:"CVR",ctrl:"3.21%",variant:"4.10%",abs:"+0.89%p",rel:"+27.8%",ci:"[+13.2%, +42.5%]",pval:"<0.001",n:"24,400",runtime:"24일",guardrail:"통과",decision:"ship"},
+  {exp:"체크아웃 흐름",metric:"CVR",ctrl:"4.79%",variant:"5.89%",abs:"+1.10%p",rel:"+22.9%",ci:"[-6.9%, +52.8%]",pval:"0.132",n:"3,800",runtime:"12일",guardrail:"❌ AOV↓",decision:"monitor"},
+  {exp:"가격 표시 방식",metric:"CVR",ctrl:"2.79%",variant:"3.41%",abs:"+0.62%p",rel:"+22.1%",ci:"[+5.4%, +38.8%]",pval:"0.009",n:"21,300",runtime:"19일",guardrail:"통과",decision:"ship"},
+  {exp:"소셜증거 배치",metric:"CVR",ctrl:"2.90%",variant:"3.48%",abs:"+0.58%p",rel:"+19.9%",ci:"[+4.3%, +35.5%]",pval:"0.012",n:"23,070",runtime:"18일",guardrail:"통과",decision:"ship"},
+  {exp:"무료배송 배너",metric:"CVR",ctrl:"5.00%",variant:"5.90%",abs:"+0.90%p",rel:"+18.0%",ci:"[+4.1%, +31.8%]",pval:"0.011",n:"16,420",runtime:"22일",guardrail:"통과",decision:"ship"},
+  {exp:"필터 UI 개선",metric:"CVR",ctrl:"3.99%",variant:"4.68%",abs:"+0.68%p",rel:"+17.1%",ci:"[-1.2%, +35.4%]",pval:"0.067",n:"11,970",runtime:"19일",guardrail:"통과",decision:"monitor"},
+  {exp:"추천 위젯",metric:"CVR",ctrl:"3.08%",variant:"3.58%",abs:"+0.51%p",rel:"+16.5%",ci:"[-18.8%, +51.8%]",pval:"0.359",n:"4,200",runtime:"10일",guardrail:"통과",decision:"monitor"},
+  {exp:"장바구니 배지",metric:"CVR",ctrl:"3.00%",variant:"3.49%",abs:"+0.49%p",rel:"+16.3%",ci:"[-5.4%, +38.1%]",pval:"0.141",n:"11,320",runtime:"13일",guardrail:"통과",decision:"monitor"},
+  {exp:"팝업 타이밍",metric:"CVR",ctrl:"1.21%",variant:"1.40%",abs:"+0.19%p",rel:"+15.6%",ci:"[-33.9%, +65.1%]",pval:"0.536",n:"5,500",runtime:"16일",guardrail:"⚠ SRM",decision:"retest"},
+  {exp:"메일 제목 A/B",metric:"Open Rate",ctrl:"22.70%",variant:"26.15%",abs:"+3.45%p",rel:"+15.2%",ci:"[+12.7%, +17.7%]",pval:"<0.001",n:"88,000",runtime:"14일",guardrail:"통과",decision:"ship"},
+  {exp:"이미지 A/B",metric:"CTR",ctrl:"4.10%",variant:"4.60%",abs:"+0.50%p",rel:"+12.3%",ci:"[+1.2%, +23.3%]",pval:"0.029",n:"31,200",runtime:"18일",guardrail:"통과",decision:"hold"},
+  {exp:"위시리스트 버튼",metric:"CVR",ctrl:"2.80%",variant:"3.10%",abs:"+0.30%p",rel:"+10.9%",ci:"[-16.0%, +37.8%]",pval:"0.428",n:"7,760",runtime:"17일",guardrail:"통과",decision:"monitor"},
+  {exp:"버튼 컬러",metric:"CVR",ctrl:"3.50%",variant:"3.88%",abs:"+0.38%p",rel:"+10.8%",ci:"[-4.2%, +25.8%]",pval:"0.160",n:"19,800",runtime:"21일",guardrail:"통과",decision:"monitor"},
+  {exp:"챗봇 위치",metric:"참여율",ctrl:"1.79%",variant:"1.90%",abs:"+0.10%p",rel:"+5.7%",ci:"[-20.9%, +32.4%]",pval:"0.673",n:"12,200",runtime:"28일",guardrail:"통과",decision:"stop"},
+  {exp:"리뷰 노출",metric:"CVR",ctrl:"2.70%",variant:"2.82%",abs:"+0.12%p",rel:"+4.4%",ci:"[-32.7%, +41.6%]",pval:"0.815",n:"4,100",runtime:"28일",guardrail:"통과",decision:"stop"},
+  {exp:"검색 자동완성",metric:"사용률",ctrl:"4.29%",variant:"4.45%",abs:"+0.16%p",rel:"+3.8%",ci:"[-12.8%, +20.4%]",pval:"0.656",n:"12,680",runtime:"20일",guardrail:"통과",decision:"stop"},
+  {exp:"온보딩 투어",metric:"CVR",ctrl:"2.91%",variant:"2.75%",abs:"-0.16%p",rel:"-5.5%",ci:"[-29.2%, +18.2%]",pval:"0.649",n:"8,920",runtime:"15일",guardrail:"통과",decision:"stop"},
+];
 const tDecLabel={ship:"Ship",hold:"Hold",retest:"Re-test",monitor:"Monitor",stop:"Stop"};
 const t=document.getElementById("decTable");
 t.innerHTML="<thead><tr>"+
