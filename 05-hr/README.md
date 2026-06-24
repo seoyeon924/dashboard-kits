@@ -16,7 +16,7 @@ claude
 ```
 
 ## 내 데이터로 바꾸기
-`data/recruiting.csv`를 본인 채용 데이터로 교체하고 다시 `/build-dashboard` 하면 끝.
+`data/recruiting.csv`(채용)·`data/employees.csv`(직원)를 본인 데이터로 교체하고 다시 `/build-dashboard` 하면 끝.
 필요한 컬럼: `department, stage, stage_order, candidates, passed, source, avg_days, offer_sent, offer_accepted`
 퍼널 단계는 `지원 → 서류 → 1차면접 → 2차면접 → 오퍼 → 입사` 순서로 stage_order에 넣습니다.
 
@@ -26,7 +26,8 @@ claude
 ├── CLAUDE.md                      # 디자인 헌법 (색·KPI·구성 규칙)
 ├── .claude/skills/build-dashboard/ # 작업 절차 (이게 명령어가 됨)
 ├── templates/reference.html       # 품질 기준 = 강사의 완성 대시보드 (HR People Analytics OS)
-├── data/recruiting.csv            # 샘플 데이터 (여기를 교체)
+├── data/recruiting.csv            # 채용 퍼널 (부서×단계)
+├── data/employees.csv             # 직원 단위 (재직·이직·성과·이탈위험)
 └── output/                        # 결과물이 여기 생성됨
 ```
 

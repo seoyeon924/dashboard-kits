@@ -1,8 +1,22 @@
 # CLAUDE.md — HR 채용 퍼널 & People Analytics 대시보드
 
 ## 이 프로젝트의 목표
-`data/`의 채용 CSV를 받아, **이 폴더의 디자인을 그대로 따르는** 채용 퍼널·이탈 리스크 대시보드 HTML을 `output/`에 만든다.
+`data/`의 **채용 퍼널 CSV(`recruiting.csv`) + 직원 단위 CSV(`employees.csv`)**를 받아, **이 폴더의 디자인을 그대로 따르는** 채용 퍼널·People Analytics 대시보드 HTML을 `output/`에 만든다.
 "예쁜 화면"이 아니라 "3초 안에 채용 퍼널의 어느 단계가 병목이고 누구를 먼저 붙잡아야 하는지 보이는 화면"을 만든다.
+
+---
+
+## 입력 데이터 (2개 소스 — ATS + HRIS)
+HR 대시보드는 **채용(ATS)** 과 **재직·이직(HRIS)** 두 도메인을 합친다. 각 차트는 아래 둘 중 하나에서 집계한다. **행을 다 읽지 말고 python으로 집계**한다.
+
+**① `recruiting.csv` — 채용 퍼널** (`department, stage, stage_order, candidates, passed, source, avg_days, offer_sent, offer_accepted`)
+- Q1 채용 퍼널·단계별 전환율·전체 전환율·time-to-hire·오퍼 수락률·부서별 채용 소요일.
+
+**② `employees.csv` — 직원 단위** (`employee_id, department, tenure_years, perf_grade, engagement, last_1on1_days, status, leave_type, leave_month, risk_score`)
+- **총 재직 인원** = count(status=재직) · **자발적 퇴사자/이직률** = leave_type=자발 비중 · **부서별 자발적 이직률** = 부서별 자발 퇴사 / 부서 재직(연환산).
+- **성과 등급 분포** = `perf_grade`(S~D) 집계 · **이직 위험도 등급 분포** = `risk_score` 구간(매우위험 ≥70 · 위험 50~69 · 주의 30~49 · 안정 <30) · **고위험 이탈 인원** = count(재직 & risk_score ≥ 70).
+- **이탈 위험 인원 테이블(riskData)** = `risk_score` 상위 직원(부서·근속·성과·몰입도·마지막 1:1·위험점수) · **Q1 인원 변동(워터폴)** = 입사(recruiting 입사 수) − 자발/비자발 퇴사.
+- `risk_score`(0~100)는 근속·성과·engagement·last_1on1 기반 예측치.
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: build-dashboard
 description: data/의 채용 CSV를 분석해, templates/reference.html과 동일한 퀄리티의 HR 채용 퍼널·이탈 리스크 대시보드를 output/에 생성하는 스킬. "대시보드 만들어줘", "/build-dashboard" 시 사용.
-argument-hint: "[CSV 경로 — 생략 시 data/recruiting.csv]"
+argument-hint: "[CSV — 생략 시 data/recruiting.csv(채용) + data/employees.csv(직원)]"
 disable-model-invocation: false
 allowed-tools: Read, Glob, Grep, Write, Bash
 ---
@@ -12,7 +12,7 @@ allowed-tools: Read, Glob, Grep, Write, Bash
 **반드시 아래 5단계를 순서대로 수행한다. 단계를 건너뛰지 않는다.**
 
 ## STEP 1 — 데이터 읽기 (EDA)
-- 인자로 받은 CSV(없으면 `data/recruiting.csv`)를 Read/Bash로 로드.
+- 두 CSV를 python으로 집계 로드: `data/recruiting.csv`(채용 퍼널)·`data/employees.csv`(직원 단위). 채용 퍼널·time-to-hire·오퍼 수락률은 recruiting에서, 재직인원·자발적 이직률·성과 등급·이탈 위험은 employees에서 — CLAUDE.md 매핑대로. 행을 다 읽지 말고 집계.
 - 컬럼·행 수·부서 목록·단계 목록을 한 줄로 요약해 사용자에게 보여준다.
 - 필수 컬럼 확인: `department, stage, stage_order, candidates, passed, source, avg_days, offer_sent, offer_accepted`.
   - 컬럼명이 다르면 가장 가까운 것에 매핑하고, 매핑 결과를 알려준다.
